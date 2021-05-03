@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
 
-        ItemWorld.SpawnItemWorld(new Vector3(20,20), new Item{itemType = Item.ItemType.Charcoal,amount = 1});
+        //ItemWorld.SpawnItemWorld(new Vector3(20,20), new Item{itemType = Item.ItemType.Charcoal,amount = 1});
+        //ItemWorld.SpawnItemWorld(new Vector3(-20,-20), new Item{itemType = Item.ItemType.Torch,amount = 1});
     }
 
     // Update is called once per frame

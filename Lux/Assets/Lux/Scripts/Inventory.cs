@@ -13,7 +13,7 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Torch, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Charcoal, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Stones, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.MetalNet, amount = 1 });
+        /*AddItem(new Item { itemType = Item.ItemType.MetalNet, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.RubyGem, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Hat, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Sticks, amount = 1 });
@@ -21,7 +21,7 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.FrozenCarrotBlock, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.ThawedCarrot, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Lantern, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.IceFlower, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.IceFlower, amount = 1 });*/
         Debug.Log(itemList.Count);
     }
 
@@ -29,7 +29,7 @@ public class Inventory
     {
         itemList.Add(item);
     }
-    public List<Item>GetItemList()
+    public List<Item> GetItemList()
     {
         return itemList;
     }

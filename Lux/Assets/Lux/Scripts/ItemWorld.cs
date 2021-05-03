@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemWorld : MonoBehaviour
 {
-    public static ItemWorld SpawnItemWorld(Vector3 position, Item item)
+   public static ItemWorld SpawnItemWorld(Vector3 position, Item item)
     {
-        Transform transform = Instantiate(ItemAssets. Instance.pfItemWorld, position, Quaternion. identity);
+       Transform transform = Instantiate(ItemAssets. Instance.pfItemWorld, position, Quaternion. identity);
 
         ItemWorld itemWorld = transform.GetComponent<ItemWorld>();
         itemWorld.SetItem(item);
@@ -15,6 +15,11 @@ public class ItemWorld : MonoBehaviour
     }
     Item item;
     SpriteRenderer spriteRenderer;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     public void SetItem(Item item)
     {
         this .item = item;

@@ -12,18 +12,18 @@ public class ItemAssets : MonoBehaviour
    }
 public Transform pfItemWorld;
 
-   public Sprite TorchSprite;
-public Sprite CharcoalSprite;
-public Sprite StonesSprite;
-public Sprite MetalNetSprite;
-public Sprite RubyGemSprite;
-public Sprite HatSprite;
-public Sprite SticksSprite;
-public Sprite ScarfSprite;
-public Sprite FrozenCarrotBlockSprite;
-public Sprite ThawedCarrotSprite;
-public Sprite LanternSprite;
-public Sprite IceFlowerSprite;
+public Sprite torchSprite;
+public Sprite charcoalSprite;
+public Sprite stonesSprite;
+public Sprite metalNetSprite;
+public Sprite rubyGemSprite;
+//public Sprite hatSprite;
+public Sprite sticksSprite;
+public Sprite scarfSprite;
+public Sprite frozenCarrotBlockSprite;
+public Sprite thawedCarrotSprite;
+public Sprite lanternSprite;
+public Sprite iceFlowerSprite;
 }
 
 
