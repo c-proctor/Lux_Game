@@ -21,8 +21,8 @@ public class TestPlayer : MonoBehaviour
             quest.goal.EnemyKilled();
             if (quest.goal.IsReached())
             {
-                experience += quest.experienceReward;
-                gold += quest.goldReward;
+                //experience += quest.experienceReward;
+                //gold += quest.goldReward;
                 quest.Complete();
             }
         }
