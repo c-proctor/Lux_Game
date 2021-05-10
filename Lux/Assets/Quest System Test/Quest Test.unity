@@ -566,6 +566,14 @@ MonoBehaviour:
   health: 5
   experience: 40
   gold: 1000
+  quest:
+    isActive: 0
+    title: 
+    description: 
+    goal:
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
 --- !u!1 &595995212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,8 +1523,14 @@ MonoBehaviour:
     isActive: 0
     title: On the Hunt
     description: Adventure and get rewards
-  player: {fileID: 0}
+    goal:
+      goalType: 0
+      requiredAmount: 0
+      currentAmount: 0
+  player: {fileID: 552060295}
   questWindow: {fileID: 1351771961}
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
 --- !u!4 &1746797973
 Transform:
   m_ObjectHideFlags: 0

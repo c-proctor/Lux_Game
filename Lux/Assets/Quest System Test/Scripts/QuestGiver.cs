@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestGiver : MonoBehaviour
 {
    public Quest quest;
    
-   public Player player;
+   public TestPlayer player;
 
     public GameObject questWindow;
-    // public Text titleText;
-    // public Text descriptionText;
+    public Text titleText;
+    public Text descriptionText;
 
    public void OpenQuestWindow()
    {
        questWindow.SetActive(true);
-       // titleText.text = quest.title;
-       // descriptionText.text = quest.description;
+        titleText.text = quest.title;
+       descriptionText.text = quest.description;
    }
 
    public void AcceptQuest()
@@ -24,6 +25,6 @@ public class QuestGiver : MonoBehaviour
        questWindow.SetActive(false);
        quest.isActive = true;
        // give to player
-       //player.quest = quest;
+       player.quest = quest;
    }
 }
