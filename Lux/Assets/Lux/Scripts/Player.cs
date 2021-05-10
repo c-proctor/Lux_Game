@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int health = 10;
     private Inventory inventory;
     [SerializeField] UI_Inventory uiInventory;
 
@@ -20,6 +21,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (Player collide with bullet tag){
+            health--;
+        }*/
     }
+
 }
