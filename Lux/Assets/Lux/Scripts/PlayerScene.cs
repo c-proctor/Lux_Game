@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerScene : MonoBehaviour
 {
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerScene : MonoBehaviour
         {
             Debug.Log("FIREWORLD");
             SceneManager.LoadScene(3);
+            
         }
         if(col.gameObject.CompareTag("IceDoor"))
         {

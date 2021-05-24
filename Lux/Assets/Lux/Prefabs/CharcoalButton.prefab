@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2033395801005956216}
   - component: {fileID: 6788773184842448343}
   m_Layer: 5
-  m_Name: PickupButton
+  m_Name: CharcoalButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
