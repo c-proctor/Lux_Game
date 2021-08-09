@@ -1529,8 +1529,8 @@ MonoBehaviour:
       currentAmount: 0
   player: {fileID: 552060295}
   questWindow: {fileID: 1351771961}
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
+  titleText: {fileID: 1547623895}
+  descriptionText: {fileID: 1185789587}
 --- !u!4 &1746797973
 Transform:
   m_ObjectHideFlags: 0

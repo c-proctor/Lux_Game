@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
+    //This is called in the DialogueTrigger script. You give all the dialogue in the DialogueTrigger script
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Starting conversation with " + dialogue.name);
@@ -32,6 +33,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    //This is typically done on button click
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -44,7 +46,8 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(sentence);
         dialogueText.text = sentence;
     }
-
+    
+    //This just needs to close the dialogue chat popup
     void EndDialogue()
     {
         Debug.Log("End of conversation.");

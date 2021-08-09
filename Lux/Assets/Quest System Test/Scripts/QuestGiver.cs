@@ -16,7 +16,7 @@ public class QuestGiver : MonoBehaviour
    public void OpenQuestWindow()
    {
        questWindow.SetActive(true);
-        titleText.text = quest.title;
+       titleText.text = quest.title; //This overwrites the text in the title text and description text
        descriptionText.text = quest.description;
    }
 
