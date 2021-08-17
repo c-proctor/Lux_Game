@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    GameObject target;
+    Transform target;
     public int speed;
     Rigidbody bulletRB;
 
@@ -12,10 +12,16 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         bulletRB = GetComponent<Rigidbody>();
-        target = GameObject.FindGameObjectWithTag("Player");
-        Vector3 moveDir = (target.transform.position - transform.position).normalized * speed;
-        bulletRB.velocity = new Vector3(moveDir.x, moveDir.y,moveDir.z);
+        // Finds the player 
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        // Looks at the player so that it moves in the correct direction in the update (as long as the projectile is a sphere this is all g)
+        transform.LookAt(target);
+        // Destroy after 2 seconds
         Destroy(this.gameObject, 2);
     }
-
+    void Update()
+    {
+        // Moves towards the player's position when it was shot
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
 }

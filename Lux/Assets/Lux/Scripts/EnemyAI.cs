@@ -24,17 +24,16 @@ public class EnemyAI : MonoBehaviour
     {
         distanceFromPlayer = Vector3.Distance(player.position, transform.position);
 
+        // Keep an eye on this if statement
         if (distanceFromPlayer < lineOfSight && distanceFromPlayer > attackRange)
         {
             transform.position = Vector3.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
-        /*
         else if (distanceFromPlayer <= attackRange && nextFireTime < Time.time)
         {
             Instantiate(bullet, bulletPoint.transform.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;
         }
-        */
 
     }
 
