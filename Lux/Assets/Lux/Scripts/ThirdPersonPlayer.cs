@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
@@ -9,6 +9,9 @@ public class ThirdPersonPlayer : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody rb;
     public Animator animator;
+    public GameObject playerBullet;
+    public GameObject bulletPoint;
+    private int playerHealth;
 
     // By default, it will be private (because it is a class, we don't have to say private beforehand)  
     Vector2 currentMove;
@@ -19,6 +22,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     public Transform playerCamera;
 
     MovementType moveType = MovementType.Normal;
+    private float nextFireTime;
+    public float fireRate;
 
     // In case we want more movement types
     public enum MovementType
@@ -31,13 +36,27 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         input = new PlayerInput();
 
+        //Leave this be, if it works, it works
         input.Player.Move.performed += ctx =>
         {
             currentMove = ctx.ReadValue<Vector2>();
             movePressed = currentMove.x != 0 || currentMove.y != 0;
         };
 
+        playerHealth = PlayerPrefs.GetInt("PlayerHealth");
+
         //controller = this.GetComponent<CharacterController>();
+    }
+
+
+    public void ShootProjectile(InputAction.CallbackContext context)
+    {
+        if(nextFireTime < Time.time)
+        {
+            Instantiate(playerBullet, bulletPoint.transform.position, Quaternion.identity);
+            nextFireTime = Time.time + fireRate;
+        }
+        
     }
 
     private void HandleRotation()
@@ -81,5 +100,11 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void OnDisable()
     {
         input.Player.Disable();
+    }
+
+    public void TakeHealth(int lostHealth)
+    {
+        playerHealth -= lostHealth;
+        Debug.Log("Player lost health");
     }
 }
