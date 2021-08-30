@@ -12,6 +12,8 @@ TagManager:
   - IceFloor
   - IceBlock
   - inventory
+  - IceBullet
+  - FireBullet
   layers:
   - Default
   - TransparentFX

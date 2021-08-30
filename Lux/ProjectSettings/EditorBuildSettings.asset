@@ -17,4 +17,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Lux/Scenes/FireScene.unity
     guid: 76009c0788fab4641bf623f747025e4e
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 2bb334ff37212d843926b68d764b9626, type: 2}
