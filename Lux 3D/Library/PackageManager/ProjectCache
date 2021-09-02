@@ -1,20 +1,20 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: D:/GitHub Repos/Lux_Game/Lux 3D/Packages/manifest.json
+    m_FilePath: I:/2021/Github/Lux_Game/Lux 3D/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637659091691234326
-    m_Hash: 1062270288
+      ticks: 637660751920296467
+    m_Hash: 1551737231
   m_LockFileStatus:
-    m_FilePath: D:/GitHub Repos/Lux_Game/Lux 3D/Packages/packages-lock.json
+    m_FilePath: I:/2021/Github/Lux_Game/Lux 3D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637659091691939156
-    m_Hash: 4265602256
+      ticks: 637660751920416151
+    m_Hash: 4011367108
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -25,7 +25,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.6.10
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.cinemachine@2.6.10
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.cinemachine@2.6.10
       assetPath: Packages/com.unity.cinemachine
       name: com.unity.cinemachine
       displayName: Cinemachine
@@ -168,7 +168,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.5.7
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.collab-proxy@1.5.7
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.collab-proxy@1.5.7
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -203,12 +203,7 @@ m_PackageAssets:
         - 1.3.7
         - 1.3.8
         - 1.3.9
-        - 1.4.9
         - 1.5.7
-        - 1.6.0
-        - 1.7.1
-        - 1.8.0
-        - 1.9.0
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -221,8 +216,6 @@ m_PackageAssets:
         - 2.1.0-preview.6
         compatible:
         - 1.5.7
-        - 1.6.0
-        - 1.8.0
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -276,7 +269,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.7
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ide.rider@2.0.7
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ide.rider@2.0.7
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -317,7 +310,6 @@ m_PackageAssets:
         - 3.0.4
         - 3.0.5
         - 3.0.6
-        - 3.0.7
         compatible:
         - 1.0.2
         - 1.0.6
@@ -343,7 +335,6 @@ m_PackageAssets:
         - 3.0.4
         - 3.0.5
         - 3.0.6
-        - 3.0.7
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -383,7 +374,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.8
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -413,8 +404,6 @@ m_PackageAssets:
         - 2.0.5
         - 2.0.7
         - 2.0.8
-        - 2.0.9
-        - 2.0.11
         compatible:
         - 1.0.2
         - 1.0.3
@@ -429,9 +418,7 @@ m_PackageAssets:
         - 2.0.5
         - 2.0.7
         - 2.0.8
-        - 2.0.9
-        - 2.0.11
-        verified: 2.0.11
+        verified: 2.0.8
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
@@ -457,7 +444,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637562620210000000
+      datePublishedTicks: 0
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -470,7 +457,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.3
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ide.vscode@1.2.3
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ide.vscode@1.2.3
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -539,7 +526,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.2
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.inputsystem@1.0.2
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.inputsystem@1.0.2
       assetPath: Packages/com.unity.inputsystem
       name: com.unity.inputsystem
       displayName: Input System
@@ -579,8 +566,6 @@ m_PackageAssets:
         - 1.0.0
         - 1.0.1
         - 1.0.2
-        - 1.1.0-pre.5
-        - 1.1.0-pre.6
         - 1.1.0-preview.1
         - 1.1.0-preview.2
         - 1.1.0-preview.3
@@ -609,8 +594,6 @@ m_PackageAssets:
         - 1.0.0
         - 1.0.1
         - 1.0.2
-        - 1.1.0-pre.5
-        - 1.1.0-pre.6
         - 1.1.0-preview.1
         - 1.1.0-preview.2
         - 1.1.0-preview.3
@@ -651,7 +634,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.2
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.polybrush@1.0.2
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.polybrush@1.0.2
       assetPath: Packages/com.unity.polybrush
       name: com.unity.polybrush
       displayName: Polybrush
@@ -729,7 +712,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.1
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.postprocessing@3.0.1
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.postprocessing@3.0.1
       assetPath: Packages/com.unity.postprocessing
       name: com.unity.postprocessing
       displayName: Post Processing
@@ -778,14 +761,12 @@ m_PackageAssets:
         - 3.0.1
         - 3.0.3
         - 3.1.0
-        - 3.1.1
         compatible:
         - 2.3.0
         - 3.0.1
         - 3.0.3
         - 3.1.0
-        - 3.1.1
-        verified: 3.1.1
+        verified: 3.1.0
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -814,7 +795,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 4.5.2
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.probuilder@4.5.2
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.probuilder@4.5.2
       assetPath: Packages/com.unity.probuilder
       name: com.unity.probuilder
       displayName: ProBuilder
@@ -954,7 +935,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.1.24
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.test-framework@1.1.24
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.test-framework@1.1.24
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -997,15 +978,9 @@ m_PackageAssets:
         - 1.1.20
         - 1.1.22
         - 1.1.24
-        - 1.1.26
-        - 1.1.27
-        - 1.1.29
         compatible:
         - 1.1.24
-        - 1.1.26
-        - 1.1.27
-        - 1.1.29
-        verified: 1.1.29
+        verified: 1.1.24
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -1048,7 +1023,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.6
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.textmeshpro@3.0.6
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.textmeshpro@3.0.6
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -1121,7 +1096,6 @@ m_PackageAssets:
         - 1.5.4
         - 1.5.5
         - 1.5.6
-        - 1.6.0-preview.1
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.1
@@ -1143,7 +1117,6 @@ m_PackageAssets:
         - 2.1.4
         - 2.1.5
         - 2.1.6
-        - 2.2.0-preview.1
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -1161,10 +1134,8 @@ m_PackageAssets:
         - 3.0.4
         - 3.0.5
         - 3.0.6
-        - 3.2.0-pre.1
         compatible:
         - 3.0.6
-        - 3.2.0-pre.1
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
@@ -1207,7 +1178,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.4.8
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.timeline@1.4.8
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.timeline@1.4.8
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -1280,14 +1251,9 @@ m_PackageAssets:
         - 1.5.1-pre.3
         - 1.5.2
         - 1.5.4
-        - 1.5.5
-        - 1.5.6
         - 1.6.0-pre.1
         - 1.6.0-pre.3
         - 1.6.0-pre.4
-        - 1.6.0-pre.5
-        - 1.6.1
-        - 1.6.2
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1301,14 +1267,9 @@ m_PackageAssets:
         - 1.5.1-pre.3
         - 1.5.2
         - 1.5.4
-        - 1.5.5
-        - 1.5.6
         - 1.6.0-pre.1
         - 1.6.0-pre.3
         - 1.6.0-pre.4
-        - 1.6.0-pre.5
-        - 1.6.1
-        - 1.6.2
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -1346,7 +1307,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637557616100000000
+      datePublishedTicks: 0
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -1359,7 +1320,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 0.1.21-preview
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@0.1.21-preview
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@0.1.21-preview
       assetPath: Packages/com.unity.toolchain.win-x86_64-linux-x86_64
       name: com.unity.toolchain.win-x86_64-linux-x86_64
       displayName: Toolchain Win Linux x64
@@ -3256,7 +3217,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 0.1.19-preview
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.sysroot@0.1.19-preview
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.sysroot@0.1.19-preview
       assetPath: Packages/com.unity.sysroot
       name: com.unity.sysroot
       displayName: Sysroot Base
@@ -3329,7 +3290,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 0.1.14-preview
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.sysroot.linux-x86_64@0.1.14-preview
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.sysroot.linux-x86_64@0.1.14-preview
       assetPath: Packages/com.unity.sysroot.linux-x86_64
       name: com.unity.sysroot.linux-x86_64
       displayName: Sysroot Linux x64
@@ -3401,7 +3362,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.6
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ext.nunit@1.0.6
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.ext.nunit@1.0.6
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -3462,7 +3423,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.3
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.settings-manager@1.0.3
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.settings-manager@1.0.3
       assetPath: Packages/com.unity.settings-manager
       name: com.unity.settings-manager
       displayName: Settings Manager
@@ -3520,7 +3481,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 2.0.0
       source: 1
-      resolvedPath: D:\GitHub Repos\Lux_Game\Lux 3D\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
+      resolvedPath: I:\2021\Github\Lux_Game\Lux 3D\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
       assetPath: Packages/com.unity.nuget.newtonsoft-json
       name: com.unity.nuget.newtonsoft-json
       displayName: Newtonsoft Json
@@ -3529,7 +3490,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: library
       description: 'Newtonsoft Json for use in Unity projects and Unity packages.
         Currently synced to version 12.0.2.
 
@@ -3544,27 +3505,9 @@ m_PackageAssets:
       errors: []
       versions:
         all:
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.1-preview.1
-        - 1.1.2
-        - 2.0.0-preview
-        - 2.0.0-preview.1
-        - 2.0.0-preview.2
         - 2.0.0
-        - 2.0.1-preview.1
         compatible:
-        - 1.0.0-preview.2
-        - 1.0.0-preview.3
-        - 1.0.0-preview.4
-        - 1.0.1-preview.1
-        - 1.1.2
-        - 2.0.0-preview
-        - 2.0.0-preview.1
-        - 2.0.0-preview.2
         - 2.0.0
-        - 2.0.1-preview.1
         verified: 2.0.0
       dependencies: []
       resolvedDependencies: []
@@ -3581,7 +3524,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637237898320000000
+      datePublishedTicks: 0
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -3591,5 +3534,5 @@ m_PackageAssets:
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
-m_ProjectPath: D:/GitHub Repos/Lux_Game/Lux 3D/Packages
+m_ProjectPath: I:/2021/Github/Lux_Game/Lux 3D/Packages
 m_EditorVersion: 2020.3.10f1 (297d780c91bc)
