@@ -12,6 +12,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public GameObject playerBullet;
     public GameObject bulletPoint;
     private int playerHealth;
+    private PlayerBullet.BulletType selectedType = PlayerBullet.BulletType.Fire;
 
     // By default, it will be private (because it is a class, we don't have to say private beforehand)  
     Vector2 currentMove;
@@ -43,20 +44,34 @@ public class ThirdPersonPlayer : MonoBehaviour
             movePressed = currentMove.x != 0 || currentMove.y != 0;
         };
 
-        playerHealth = PlayerPrefs.GetInt("PlayerHealth");
-
-        //controller = this.GetComponent<CharacterController>();
+        if (PlayerPrefs.HasKey("PlayerHealth"))
+        {
+            playerHealth = PlayerPrefs.GetInt("PlayerHealth");
+        }
+        else
+        {
+            playerHealth = 100;
+        }
+        
     }
 
 
     public void ShootProjectile(InputAction.CallbackContext context)
     {
-        if(nextFireTime < Time.time)
+        if(nextFireTime < Time.time && context.performed)
         {
+            playerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
             Instantiate(playerBullet, bulletPoint.transform.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;
         }
-        
+    }
+    public void WeaponIce(InputAction.CallbackContext context)
+    {
+        selectedType = PlayerBullet.BulletType.Ice;
+    }
+    public void WeaponFire(InputAction.CallbackContext context)
+    {
+        selectedType = PlayerBullet.BulletType.Fire;
     }
 
     private void HandleRotation()
@@ -106,5 +121,11 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         playerHealth -= lostHealth;
         Debug.Log("Player lost health");
+    }
+
+    public void AddHealth(int addedHealth)
+    {
+        playerHealth += addedHealth;
+        Debug.Log("Player health added");
     }
 }

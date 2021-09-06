@@ -41,6 +41,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Type Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8b34ae9-bb8b-420c-b8e2-4768a9e6bb8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Type Ice"",
+                    ""type"": ""Button"",
+                    ""id"": ""17cbb92d-6ace-46e9-a25f-c5403692b5e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -272,6 +288,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2557bf92-f0b8-446e-b638-011762ddb9c2"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Type Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f7d4ce9-f72b-4b5e-abbe-518c2f9d45e9"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Type Ice"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -852,6 +890,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_TypeFire = m_Player.FindAction("Type Fire", throwIfNotFound: true);
+        m_Player_TypeIce = m_Player.FindAction("Type Ice", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -916,6 +956,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_TypeFire;
+    private readonly InputAction m_Player_TypeIce;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -923,6 +965,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @TypeFire => m_Wrapper.m_Player_TypeFire;
+        public InputAction @TypeIce => m_Wrapper.m_Player_TypeIce;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -941,6 +985,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @TypeFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTypeFire;
+                @TypeFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTypeFire;
+                @TypeFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTypeFire;
+                @TypeIce.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTypeIce;
+                @TypeIce.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTypeIce;
+                @TypeIce.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTypeIce;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -954,6 +1004,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @TypeFire.started += instance.OnTypeFire;
+                @TypeFire.performed += instance.OnTypeFire;
+                @TypeFire.canceled += instance.OnTypeFire;
+                @TypeIce.started += instance.OnTypeIce;
+                @TypeIce.performed += instance.OnTypeIce;
+                @TypeIce.canceled += instance.OnTypeIce;
             }
         }
     }
@@ -1113,6 +1169,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnTypeFire(InputAction.CallbackContext context);
+        void OnTypeIce(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

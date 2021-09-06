@@ -16,4 +16,8 @@ public class Ice : MonoBehaviour
     {
         
     }
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }
