@@ -44,6 +44,7 @@ MonoBehaviour:
     x: 0
     y: 30
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     width: 1536
     height: 731
   m_MinSize: {x: 678, y: 492}
@@ -51,12 +52,17 @@ MonoBehaviour:
   vertical: 0
   controlID: 37
 =======
+=======
+>>>>>>> Stashed changes
     width: 1920
     height: 947
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
   controlID: 138
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!114 &3
 MonoBehaviour:
@@ -76,11 +82,14 @@ MonoBehaviour:
     x: 1466
     y: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     width: 330
     height: 731
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
 =======
+=======
+>>>>>>> Stashed changes
     width: 454
     height: 947
   m_MinSize: {x: 276, y: 71}
@@ -243,7 +252,11 @@ MonoBehaviour:
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   controlID: 38
+=======
+  controlID: 20
+>>>>>>> Stashed changes
 =======
   controlID: 20
 >>>>>>> Stashed changes
@@ -272,7 +285,11 @@ MonoBehaviour:
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   controlID: 115
+=======
+  controlID: 21
+>>>>>>> Stashed changes
 =======
   controlID: 21
 >>>>>>> Stashed changes
@@ -355,9 +372,15 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_SelectedIDs: e64a0000
     m_LastClickedID: 19174
     m_ExpandedIDs: 00000000e64a000000ca9a3b
+=======
+    m_SelectedIDs: c6480000
+    m_LastClickedID: 18630
+    m_ExpandedIDs: 00000000b648000000ca9a3b
+>>>>>>> Stashed changes
 =======
     m_SelectedIDs: c6480000
     m_LastClickedID: 18630
@@ -391,7 +414,11 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_ExpandedIDs: 00000000e64a0000
+=======
+    m_ExpandedIDs: 00000000b6480000
+>>>>>>> Stashed changes
 =======
     m_ExpandedIDs: 00000000b6480000
 >>>>>>> Stashed changes
@@ -483,7 +510,11 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LastVerticalScrollValue: 263.19995
+=======
+  m_LastVerticalScrollValue: 540
+>>>>>>> Stashed changes
 =======
   m_LastVerticalScrollValue: 540
 >>>>>>> Stashed changes
@@ -522,7 +553,11 @@ MonoBehaviour:
       m_SelectedIDs: f24a0000
       m_LastClickedID: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       m_ExpandedIDs: 20fbffff58470000aa470000
+=======
+      m_ExpandedIDs: 3455ffffca67ffffe8a8ffff0afbffff
+>>>>>>> Stashed changes
 =======
       m_ExpandedIDs: 3455ffffca67ffffe8a8ffff0afbffff
 >>>>>>> Stashed changes
@@ -586,9 +621,15 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_Target: {x: -6.7150126, y: 1.7476096, z: -2.374401}
     speed: 2
     m_Value: {x: -6.7150126, y: 1.7476096, z: -2.374401}
+=======
+    m_Target: {x: 35.531918, y: -66.78917, z: 42.25219}
+    speed: 2
+    m_Value: {x: 35.531918, y: -66.78917, z: 42.25219}
+>>>>>>> Stashed changes
 =======
     m_Target: {x: 35.531918, y: -66.78917, z: 42.25219}
     speed: 2
@@ -641,6 +682,7 @@ MonoBehaviour:
     m_gridOpacity: 0.5
   m_Rotation:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_Target: {x: 0.14874683, y: -0.29165253, z: 0.045977272, w: 0.9438636}
     speed: 2
     m_Value: {x: 0.14873351, y: -0.29162642, z: 0.045973156, w: 0.94377905}
@@ -649,6 +691,8 @@ MonoBehaviour:
     speed: 2
     m_Value: 0.6562031
 =======
+=======
+>>>>>>> Stashed changes
     m_Target: {x: -0.023641914, y: 0.5002478, z: -0.0136642, w: -0.865459}
     speed: 2
     m_Value: {x: -0.023621239, y: 0.5015422, z: -0.0136995595, w: -0.86470217}
@@ -656,6 +700,9 @@ MonoBehaviour:
     m_Target: 43.32202
     speed: 2
     m_Value: 41.45648
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Ortho:
     m_Target: 0
