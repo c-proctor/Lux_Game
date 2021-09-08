@@ -11,6 +11,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public Animator animator;
     public GameObject playerBullet;
     public GameObject bulletPoint;
+    public CharacterController controller;
     private int playerHealth;
     private PlayerBullet.BulletType selectedType = PlayerBullet.BulletType.Fire;
 
@@ -25,6 +26,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     float angle;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVel;
+    Vector3 moveVector;
 
     MovementType moveType = MovementType.Normal;
     private float nextFireTime;
@@ -95,6 +97,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void HandleMovement()
     {
+        moveVector = Vector3.zero;
         Vector3 direction = new Vector3(currentMove.x, 0f, currentMove.y).normalized;
         //Incorporate with animator from this tutorial (https://www.youtube.com/watch?v=IurqiqduMVQ) at ~ 14.30mins
         if (movePressed)
@@ -104,7 +107,12 @@ public class ThirdPersonPlayer : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            transform.position += moveDir.normalized * moveSpeed * Time.deltaTime;
+            controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
+        }
+        if(!controller.isGrounded)
+        {
+            direction += Physics.gravity * 0.1f;
+            controller.Move(Physics.gravity * Time.deltaTime);
         }
     }
 
