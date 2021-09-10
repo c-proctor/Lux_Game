@@ -22,6 +22,7 @@ public class HealthPickup : MonoBehaviour
         if(other.gameObject.GetComponent<ThirdPersonPlayer>() != null)
         {
             other.gameObject.GetComponent<ThirdPersonPlayer>().AddHealth(healthAdd);
+            Destroy(gameObject);
         }
     }
 }
