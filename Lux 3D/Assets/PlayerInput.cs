@@ -331,17 +331,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Reset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5833dacf-cbab-4f26-accb-4c9208a77ea2"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Reset"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },

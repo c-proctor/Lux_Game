@@ -56,6 +56,7 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, lineOfSight);
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

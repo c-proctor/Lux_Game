@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ThirdPersonPlayer : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             currentMove = ctx.ReadValue<Vector2>();
             movePressed = currentMove.x != 0 || currentMove.y != 0;
         };
-
+        /*  re-enable AFTER PGF
         if (PlayerPrefs.HasKey("PlayerHealth"))
         {
             playerHealth = PlayerPrefs.GetInt("PlayerHealth");
@@ -58,7 +59,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             playerHealth = 100;
         }
-        
+        */
+        playerHealth = 100;
     }
 
     // Shoot projectile (based on fire rate and if holding down shoot button)
@@ -67,7 +69,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         if(nextFireTime < Time.time && context.performed)
         {
             playerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
-            Instantiate(playerBullet, bulletPoint.transform.position, transform.rotation);
+            Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
             nextFireTime = Time.time + fireRate;
         }
     }
@@ -79,6 +81,11 @@ public class ThirdPersonPlayer : MonoBehaviour
     public void WeaponFire(InputAction.CallbackContext context)
     {
         selectedType = PlayerBullet.BulletType.Fire;
+    }
+
+    public void RestartLevel(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void HandleRotation()
@@ -120,6 +127,10 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         //HandleRotation();
         HandleMovement();
+        if(playerHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void OnEnable()

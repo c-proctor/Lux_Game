@@ -32,5 +32,9 @@ public class Bullet : MonoBehaviour
             other.gameObject.GetComponent<ThirdPersonPlayer>().TakeHealth(10);
             Destroy(gameObject);
         }
+        else if(!other.tag.Equals("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

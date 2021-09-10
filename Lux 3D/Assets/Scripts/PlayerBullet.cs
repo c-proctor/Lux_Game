@@ -24,7 +24,7 @@ public class PlayerBullet : MonoBehaviour
         ///Look at this bit later, seems to work, but might not later on...
         target = GameObject.FindGameObjectWithTag("Player").transform;
         // Looks at the player so that it moves in the correct direction in the update (as long as the projectile is a sphere this is all g)
-        transform.LookAt(target);
+        //transform.LookAt(target); Leave commented out for time being...
         // Destroy after 2 seconds
         Destroy(gameObject, 2);
     }
@@ -44,7 +44,7 @@ public class PlayerBullet : MonoBehaviour
     void Update()
     {
         // Moves towards the player's position when it was shot
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.up * speed * Time.deltaTime;
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -57,6 +57,10 @@ public class PlayerBullet : MonoBehaviour
         else if (collider.gameObject.GetComponent<Fire>() != null && type == BulletType.Ice)
         {
             collider.gameObject.GetComponent<Fire>().DestroySelf();
+            Destroy(gameObject);
+        }
+        if(collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
+        {
             Destroy(gameObject);
         }
     }

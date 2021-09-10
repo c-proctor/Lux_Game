@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IceBullet
   - DialogueText
+  - Enemy
   layers:
   - Default
   - TransparentFX

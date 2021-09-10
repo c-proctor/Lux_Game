@@ -23,6 +23,7 @@ public class ItemPickup : MonoBehaviour
         if(other.tag == "Player")
         {
             inventory.slots.Add(item);
+            FindObjectOfType<GameplayUI>().ItemGot();
             Destroy(gameObject);
         }
     }
