@@ -15,6 +15,9 @@ public class ThirdPersonPlayer : MonoBehaviour
     public CharacterController controller;
     private int playerHealth;
     private PlayerBullet.BulletType selectedType = PlayerBullet.BulletType.Fire;
+    private AudioSource Audio;
+    public AudioClip Fireclip;
+    public AudioClip BackgroundMusic;
 
     // By default, it will be private (because it is a class, we don't have to say private beforehand)  
     Vector2 currentMove;
@@ -61,6 +64,10 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
         */
         playerHealth = 100;
+        Audio = GetComponent<AudioSource>();
+        Audio.clip = BackgroundMusic;
+        Audio.loop = true;
+        Audio.Play();
     }
 
     // Shoot projectile (based on fire rate and if holding down shoot button)
@@ -71,6 +78,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             playerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
             Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
             nextFireTime = Time.time + fireRate;
+            AudioSource.PlayClipAtPoint(Fireclip, transform.position, 1.0f);
         }
     }
     // For changing weapon type (can setup as an if check when having actual pickups)

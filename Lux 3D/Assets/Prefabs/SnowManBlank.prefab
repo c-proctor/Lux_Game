@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 5606872327211900000}
   - component: {fileID: 2480159277060956110}
   - component: {fileID: 3005645690033281754}
+  - component: {fileID: 6553645276776018052}
+  - component: {fileID: 8847395214759180653}
+  - component: {fileID: 4390839965560100090}
   m_Layer: 0
   m_Name: pSphere5
   m_TagString: Untagged
@@ -81,6 +84,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &6553645276776018052
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260444935299335620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 3.8157241, z: -0.00000047683716}
+--- !u!114 &8847395214759180653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260444935299335620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34604f736776bed438af73d9aa33a560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestItems: 
+--- !u!114 &4390839965560100090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260444935299335620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb94f48187e7ca34a8ef413974b31e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestCompletedPrefab: {fileID: 3105886765676233917, guid: 101f91110f7e0e04cb9230d20356af72, type: 3}
+  PairedQuest: {fileID: 8847395214759180653}
 --- !u!1 &7049903392380565885
 GameObject:
   m_ObjectHideFlags: 0

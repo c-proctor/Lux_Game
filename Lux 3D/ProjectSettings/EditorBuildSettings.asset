@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Ice World.unity
+    guid: 7600faf2717f821449060f0167bd3838
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2bb334ff37212d843926b68d764b9626, type: 2}
