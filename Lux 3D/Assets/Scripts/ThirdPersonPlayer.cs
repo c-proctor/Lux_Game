@@ -111,8 +111,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
         if(!controller.isGrounded)
         {
-            direction += Physics.gravity * 0.1f;
-            controller.Move(Physics.gravity * Time.deltaTime);
+            //direction += Physics.gravity * 0.1f;
+            controller.Move(new Vector3(0f, Physics.gravity.y * Time.deltaTime, 0f));
         }
     }
 

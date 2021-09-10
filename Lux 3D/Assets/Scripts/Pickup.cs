@@ -14,6 +14,7 @@ public class Pickup : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
+        /*
         if(col.CompareTag("Player"))
         {
             Debug.Log("pickup");
@@ -28,6 +29,7 @@ public class Pickup : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     // Update is called once per frame
