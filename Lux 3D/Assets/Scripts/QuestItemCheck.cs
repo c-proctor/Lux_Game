@@ -20,7 +20,6 @@ public class QuestItemCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        AllFound = true;
         if(other.tag == "Player")
         {   
             List<ItemType.ItemTypes> PlayerItemsList = other.gameObject.GetComponent<InventorySlot>().slots;
@@ -28,14 +27,22 @@ public class QuestItemCheck : MonoBehaviour
             {
                 if(!PlayerItemsList.Contains(QuestItems[ii]))
                 {
-                    AllFound = false;
+
                 }
             }
         }
     }
 
-    public bool GetQuestCompletionState()
+    public bool GetQuestCompletionState(GameObject other)
     {
-        return (AllFound);
+        List<ItemType.ItemTypes> PlayerItemsList = other.GetComponent<InventorySlot>().slots;
+        for (int ii = 0; ii < QuestItems.Length; ii++)
+        {
+            if(!PlayerItemsList.Contains(QuestItems[ii]))
+            {
+                return (false);
+            }
+        }
+        return (true);
     }
 }

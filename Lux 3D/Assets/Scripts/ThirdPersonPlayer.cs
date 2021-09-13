@@ -18,6 +18,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     private AudioSource Audio;
     public AudioClip Fireclip;
     public AudioClip BackgroundMusic;
+    private bool CameraFocus = false;
 
     // By default, it will be private (because it is a class, we don't have to say private beforehand)  
     Vector2 currentMove;
@@ -96,8 +97,27 @@ public class ThirdPersonPlayer : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void LockCamera(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            CameraFocus = true;
+        }
+        else if(context.canceled)
+        {
+            CameraFocus = false;
+        }
+    }
+
     private void HandleRotation()
     {
+        if (CameraFocus)
+        {
+            Vector3 direction = new Vector3(currentMove.x, 0f, currentMove.y).normalized;
+            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y;
+            angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVel, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
         /*
         Vector3 currentPosition = transform.position;
 
@@ -133,7 +153,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private void Update()
     {
-        //HandleRotation();
+        HandleRotation();
         HandleMovement();
         if(playerHealth <= 0)
         {

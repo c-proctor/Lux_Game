@@ -23,7 +23,7 @@ public class QuestSnowman : MonoBehaviour
     IEnumerator CheckForCompletion()
     {
         yield return new WaitForSeconds(0.2f);
-        if (PairedQuest.GetQuestCompletionState() && !changed)
+        if (PairedQuest.GetQuestCompletionState(gameObject) && !changed)
         {
             Instantiate(QuestCompletedPrefab, transform.position, transform.rotation);
             FindObjectOfType<InventorySlot>().slots.Clear();

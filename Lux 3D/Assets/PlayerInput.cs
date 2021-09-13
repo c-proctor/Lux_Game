@@ -65,6 +65,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Target Lock"",
+                    ""type"": ""Button"",
+                    ""id"": ""0679030c-2505-4db5-9803-99305596d999"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -329,6 +337,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36d92464-dc05-4d66-b3f0-198102e13800"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Target Lock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36b14544-7dd2-4bc6-b306-5ecef755f79d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Target Lock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -912,6 +942,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_TypeFire = m_Player.FindAction("Type Fire", throwIfNotFound: true);
         m_Player_TypeIce = m_Player.FindAction("Type Ice", throwIfNotFound: true);
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
+        m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -979,6 +1010,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_TypeFire;
     private readonly InputAction m_Player_TypeIce;
     private readonly InputAction m_Player_Reset;
+    private readonly InputAction m_Player_TargetLock;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -989,6 +1021,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @TypeFire => m_Wrapper.m_Player_TypeFire;
         public InputAction @TypeIce => m_Wrapper.m_Player_TypeIce;
         public InputAction @Reset => m_Wrapper.m_Player_Reset;
+        public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1016,6 +1049,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Reset.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReset;
                 @Reset.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReset;
                 @Reset.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReset;
+                @TargetLock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
+                @TargetLock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
+                @TargetLock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1038,6 +1074,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Reset.started += instance.OnReset;
                 @Reset.performed += instance.OnReset;
                 @Reset.canceled += instance.OnReset;
+                @TargetLock.started += instance.OnTargetLock;
+                @TargetLock.performed += instance.OnTargetLock;
+                @TargetLock.canceled += instance.OnTargetLock;
             }
         }
     }
@@ -1200,6 +1239,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnTypeFire(InputAction.CallbackContext context);
         void OnTypeIce(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
+        void OnTargetLock(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

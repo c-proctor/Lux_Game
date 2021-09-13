@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     {
         bulletRB = GetComponent<Rigidbody>();
         // Finds the player 
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayer>().bulletPoint.transform;
         // Looks at the player so that it moves in the correct direction in the update (as long as the projectile is a sphere this is all g)
         transform.LookAt(target);
         // Destroy after 2 seconds
