@@ -42,6 +42,12 @@ public class ThirdPersonPlayer : MonoBehaviour
     private float nextFireTime;
     public float fireRate = 0.6f;
 
+    //Targeting system variables
+    private List<GameObject> shootableTargets;
+    private int shootableTargetsCount;
+    private GameObject currentTarget;
+    private bool targetReset;
+
     // In case we want more movement types
     public enum MovementType
     {
@@ -135,16 +141,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVel, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
-        /*
-        Vector3 currentPosition = transform.position;
-
-        Vector3 newPosition = new Vector3(currentMove.x, 0f, currentMove.y);
-
-        Vector3 lookAtPos = currentPosition + newPosition;
-
-        transform.LookAt(lookAtPos);
-        */
-        //transform.rotation = Quaternion.Euler(0f, angle, 0f);
     }
 
     private void HandleMovement()
@@ -177,6 +173,27 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if(currentTarget == null)
+        {
+            targetReset = false;
+        }
+        for(int ii = shootableTargets.Count - 1; ii>= 0; ii--)
+        {
+            if(shootableTargets[ii] == null || !shootableTargets[ii].activeInHierarchy)
+            {
+                shootableTargets.RemoveAt(ii);
+                shootableTargetsCount--;
+            }
+        }
+        /*
+        if(CameraFocus && shootableTargetsCount > 0)
+        {
+            List<GameObject> SortedShootableTargets = shootableTargets.OrderBy(gameObjects =>
+            {
+                Vector3 target_direction = gameObjects.transform.position - Camera.main.transform.position;
+            }).ToList();
+        }
+        */
     }
 
     private void OnEnable()
@@ -204,5 +221,22 @@ public class ThirdPersonPlayer : MonoBehaviour
     public int GetHealth()
     {
         return playerHealth;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            shootableTargets.Add(other.gameObject);
+            shootableTargetsCount++;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            shootableTargets.Remove(other.gameObject);
+            shootableTargetsCount--;
+        }
     }
 }
