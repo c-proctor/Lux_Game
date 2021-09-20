@@ -33,10 +33,12 @@ public class EnemyAI : MonoBehaviour
     {
         agent.destination = player.position;
         distanceFromPlayer = agent.remainingDistance;
+        /*
         if(showDistance)
         {
             Debug.Log(distanceFromPlayer);
         }
+        */
         // Keep an eye on this if statement
         if (distanceFromPlayer < lineOfSight && distanceFromPlayer > attackRange)
         {
