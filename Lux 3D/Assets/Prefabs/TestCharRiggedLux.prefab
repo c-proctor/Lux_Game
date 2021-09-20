@@ -308,7 +308,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.15293905, y: -0.08081448, z: 0.01254987, w: 0.98484576}
+  m_LocalRotation: {x: 0.15293905, y: -0.080814466, z: 0.0125498725, w: 0.98484576}
   m_LocalPosition: {x: 0.5569, y: 1.2820342, z: -3.3704834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -424,7 +424,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139928740}
-  m_LocalRotation: {x: 0.1422097, y: -0.0809463, z: 0.011669442, w: 0.9864522}
+  m_LocalRotation: {x: 0.1422097, y: -0.08094626, z: 0.011669438, w: 0.9864522}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1142,6 +1142,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0679030c-2505-4db5-9803-99305596d999
     m_ActionName: Player/Target Lock[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7490249761451085620}
+        m_TargetAssemblyTypeName: ThirdPersonPlayer, Assembly-CSharp
+        m_MethodName: JumpPlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 24637857-6830-434f-b61a-b181e5be13c8
+    m_ActionName: Player/Jump
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1169,6 +1185,7 @@ MonoBehaviour:
   BackgroundMusic: {fileID: 8300000, guid: 488fce910957baa4787d16b047d4c261, type: 3}
   playerCamera: {fileID: 963194228}
   turnSmoothTime: 0.2
+  jumpHeight: 3
   fireRate: 0.6
 --- !u!143 &153896302
 CharacterController:

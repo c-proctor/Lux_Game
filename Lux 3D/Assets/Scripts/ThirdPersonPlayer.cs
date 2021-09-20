@@ -30,6 +30,11 @@ public class ThirdPersonPlayer : MonoBehaviour
     float targetAngle;
     float angle;
     public float turnSmoothTime = 0.1f;
+    public float jumpHeight = 3.0f;
+    private Vector3 jump;
+    private bool jumpPressed = false;
+    //private float verticleVelocity = 0f;
+    Rigidbody playerRB;
     float turnSmoothVel;
     Vector3 moveVector;
 
@@ -47,6 +52,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void Awake()
     {
         input = new PlayerInput();
+        playerRB = GetComponent<Rigidbody>();
 
         //Leave this be, if it works, it works. Gets movement based inputs
         input.Player.Move.performed += ctx =>
@@ -69,6 +75,11 @@ public class ThirdPersonPlayer : MonoBehaviour
         Audio.clip = BackgroundMusic;
         Audio.loop = true;
         Audio.Play();
+    }
+
+    public void Start()
+    {
+        jump = new Vector3(0f, jumpHeight, 0f);
     }
 
     // Shoot projectile (based on fire rate and if holding down shoot button)
@@ -95,6 +106,12 @@ public class ThirdPersonPlayer : MonoBehaviour
     public void RestartLevel(InputAction.CallbackContext context)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void JumpPlayer(InputAction.CallbackContext context)
+    {
+        //playerRB.AddForce(new Vector3(0f, jumpHeight ,0f),ForceMode.Impulse);
+        //jumpPressed = context.performed;
     }
 
     public void LockCamera(InputAction.CallbackContext context)
@@ -135,6 +152,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         moveVector = Vector3.zero;
         Vector3 direction = new Vector3(currentMove.x, 0f, currentMove.y).normalized;
         //Incorporate with animator from this tutorial (https://www.youtube.com/watch?v=IurqiqduMVQ) at ~ 14.30mins
+        
         if (movePressed)
         {
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y;
@@ -147,7 +165,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         if(!controller.isGrounded)
         {
             //direction += Physics.gravity * 0.1f;
-            controller.Move(new Vector3(0f, Physics.gravity.y * Time.deltaTime, 0f));
+            controller.Move(Physics.gravity * Time.deltaTime);
         }
     }
 
