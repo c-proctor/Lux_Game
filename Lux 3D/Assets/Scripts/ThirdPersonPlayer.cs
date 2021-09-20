@@ -157,6 +157,17 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
+            if (animator != null)
+            {
+                animator.SetFloat("moveSpeed", moveSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            if (animator != null)
+            {
+                animator.SetFloat("moveSpeed", 0.0f);
+            }
         }
         if(!controller.isGrounded)
         {
@@ -177,12 +188,15 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             targetReset = false;
         }
-        for(int ii = shootableTargets.Count - 1; ii>= 0; ii--)
+        if (shootableTargets != null)
         {
-            if(shootableTargets[ii] == null || !shootableTargets[ii].activeInHierarchy)
+            for(int ii = shootableTargets.Count - 1; ii>= 0; ii--)
             {
-                shootableTargets.RemoveAt(ii);
-                shootableTargetsCount--;
+                if(shootableTargets[ii] == null || !shootableTargets[ii].activeInHierarchy)
+                {
+                    shootableTargets.RemoveAt(ii);
+                    shootableTargetsCount--;
+                }
             }
         }
         /*
