@@ -27,7 +27,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: TestAnimController
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: moveSpeed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -73,7 +79,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6300f101dd05a554ba7b82c8c60291fe, type: 2}
+  m_Motion: {fileID: -203655887218126122, guid: 9aaff5e7d3729fd4c9b0901f907eba2f, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -125,7 +131,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b0b72f5eafd39d745b769035af06190d, type: 2}
+  m_Motion: {fileID: -203655887218126122, guid: f240a2704a02c5940992aef44740430f, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -145,7 +151,7 @@ AnimatorStateMachine:
     m_Position: {x: 410, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1254209559928431774}
-    m_Position: {x: 420, y: 200, z: 0}
+    m_Position: {x: 400, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
