@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     PlayerInput input;
 
     public Transform playerCamera;
+    public Camera viewCamera;
     float targetAngle;
     float angle;
     public float turnSmoothTime = 0.1f;
@@ -43,10 +45,13 @@ public class ThirdPersonPlayer : MonoBehaviour
     public float fireRate = 0.6f;
 
     //Targeting system variables
-    private List<GameObject> shootableTargets;
+    private List<GameObject> shootableTargets = new List<GameObject>();
     private int shootableTargetsCount;
     private GameObject currentTarget;
     private bool targetReset;
+    public float lockOnAngle = 30f;
+
+    public GameObject currentPlayerBullet;
 
     // In case we want more movement types
     public enum MovementType
@@ -93,8 +98,12 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         if(nextFireTime < Time.time && context.performed)
         {
-            playerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
-            Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
+            
+            //Debug.Log(playerBullet.GetComponent<PlayerBullet>().GetTarget());
+            currentPlayerBullet = Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
+            currentPlayerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
+            currentPlayerBullet.GetComponent<PlayerBullet>().SetTarget(currentTarget);
+            currentPlayerBullet.GetComponent<PlayerBullet>().Retarget();
             nextFireTime = Time.time + fireRate;
             AudioSource.PlayClipAtPoint(Fireclip, transform.position, 1.0f);
         }
@@ -184,13 +193,14 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        if(currentTarget == null)
+        //using https://amirazmi.net/targeting-system/ tutorial
+        if (currentTarget == null)
         {
             targetReset = false;
         }
         if (shootableTargets != null)
         {
-            for(int ii = shootableTargets.Count - 1; ii>= 0; ii--)
+            for(int ii = shootableTargets.Count - 1; ii>= 0; --ii)
             {
                 if(shootableTargets[ii] == null || !shootableTargets[ii].activeInHierarchy)
                 {
@@ -199,15 +209,93 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
         }
-        /*
         if(CameraFocus && shootableTargetsCount > 0)
         {
             List<GameObject> SortedShootableTargets = shootableTargets.OrderBy(gameObjects =>
             {
-                Vector3 target_direction = gameObjects.transform.position - Camera.main.transform.position;
+                Vector3 target_direction = gameObjects.transform.position - playerCamera.position;
+
+                var cameraForward = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
+
+                var targetDir = new Vector2(target_direction.x, target_direction.z);
+
+                float angle = Vector2.Angle(cameraForward, targetDir);
+
+                return angle;
             }).ToList();
+            for (var ii = 0; ii < shootableTargets.Count(); ii++)
+            {
+                shootableTargets[ii] = SortedShootableTargets[ii];
+                if(!shootableTargets[ii].activeInHierarchy)
+                {
+                    shootableTargets.RemoveAt(ii);
+                    shootableTargetsCount--;
+                }
+            }
+            currentTarget = shootableTargets.First();
+
+            targetReset = !targetReset;
         }
-        */
+        if(targetReset && shootableTargetsCount > 0 && currentTarget != null && currentTarget.activeInHierarchy)
+        {
+            Vector3 targetDirection = currentTarget.transform.position - playerCamera.position;
+
+            var cameraForward = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
+
+            var targetDir = new Vector2(targetDirection.x, targetDirection.z);
+
+            float angle = Vector2.Angle(cameraForward, targetDir);
+
+            if (angle < Mathf.Abs(lockOnAngle))
+            {
+                List<GameObject> SortedShootableTargets = shootableTargets.OrderBy(gameObjects =>
+                {
+                    Vector3 target_direction3 = gameObjects.transform.position - playerCamera.position;
+
+                    var cameraForward = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
+
+                    var targetDir = new Vector2(target_direction3.x, target_direction3.z);
+
+                    float angle = Vector2.SignedAngle(cameraForward, targetDir);
+
+                    return angle;
+                }).ToList();
+                for (var ii = 0; ii < shootableTargets.Count(); ++ii)
+                {
+                    shootableTargets[ii] = SortedShootableTargets[ii];
+                }
+                if (shootableTargets.IndexOf(currentTarget) >= 0)
+                {
+                    GameObject nextTarget = shootableTargets[shootableTargets.IndexOf(currentTarget)];
+
+                    Vector3 target_direction3 = nextTarget.transform.position - playerCamera.position;
+
+                    var cameraForward_angled = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
+
+                    var targetDir_angled = new Vector2(target_direction3.x, target_direction3.z);
+
+                    float angled_shot = Vector2.Angle(cameraForward_angled, targetDir_angled);
+
+                    if (angled_shot < Mathf.Abs(lockOnAngle))
+                    {
+                        currentTarget = shootableTargets[shootableTargets.IndexOf(currentTarget)];
+                    }
+                }
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if(currentTarget != null)
+            {
+                currentTarget = null;
+            }
+        }
+        
+        
     }
 
     private void OnEnable()
@@ -240,17 +328,17 @@ public class ThirdPersonPlayer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Enemy")
-        {
-            shootableTargets.Add(other.gameObject);
+        { 
             shootableTargetsCount++;
+            shootableTargets.Add(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if(other.tag == "Enemy")
         {
-            shootableTargets.Remove(other.gameObject);
             shootableTargetsCount--;
+            shootableTargets.Remove(other.gameObject);
         }
     }
 }

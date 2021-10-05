@@ -135,6 +135,7 @@ MonoBehaviour:
   nextFireTime: 0
   bullet: {fileID: 3743929834484008113, guid: c6858fbb61a18b44b817578b937011c0, type: 3}
   bulletPoint: {fileID: 2576328999993445697}
+  showDistance: 0
 --- !u!195 &-402785274794758436
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     public BulletType type = BulletType.Fire;
-    Transform target;
+    GameObject target = null;
     public int speed;
     Rigidbody bulletRB;
     public Material iceMat, fireMat;
@@ -22,11 +22,23 @@ public class PlayerBullet : MonoBehaviour
         bulletRB = GetComponent<Rigidbody>();
         // Finds the player 
         ///Look at this bit later, seems to work, but might not later on...
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        //Debug.Log(target);
         // Looks at the player so that it moves in the correct direction in the update (as long as the projectile is a sphere this is all g)
-        //transform.LookAt(target); Leave commented out for time being...
+        //Debug.Log(target);
+        //transform.LookAt(target.GetComponent<EnemyAI>().bulletPoint.transform); //Leave commented out for time being...
         // Destroy after 2 seconds
         Destroy(gameObject, 2);
+    }
+
+    public void Retarget()
+    {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+        transform.LookAt(target.GetComponent<EnemyAI>().bulletPoint.transform);
+        Debug.Log(target);
     }
     public void SwitchType(BulletType bulletType)
     {
@@ -63,5 +75,18 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetTarget(GameObject newTarget)
+    {
+        if (newTarget != null)
+        {
+            target = newTarget;
+        }
+    }
+
+    public GameObject GetTarget()
+    {
+        return (target);
     }
 }
