@@ -10,7 +10,7 @@ Material:
   m_Name: Lava Material
   m_Shader: {fileID: -6465566751694194690, guid: 638a2a22a787a4b42a1848df886981a6, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -31,6 +31,17 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Vector1_1d1182e9cf5242a7b85d00f6c8dcf392: 0.21
+    - Vector1_2d2009711bf745a595848f53643d4a09: 2
+    - Vector1_830b96122cfd4f95b18f92ebb62a4870: 0.23
+    - Vector1_8c8e09395ecb401998cb366449bd55b2: 2
+    - Vector1_8e27f77cd69e4f998156e3913b786b5f: 100
+    - Vector1_c8ef0d8a5bb84b4dbf78109e0cd09b0d: 0.5
+    m_Colors:
+    - Color_6dd93f83ade540bab9b6fb387bffaf52: {r: 0.3679245, g: 0.15290369, b: 0, a: 0}
+    - Color_d5b073dc40a54a4a962351e10e63fa90: {r: 0.6981132, g: 0.14128482, b: 0, a: 0}
+    - Color_fcba55cfe38b40099376987a13bfab61: {r: 0.18867922, g: 0.03930817, b: 0, a: 0}
+    - Vector2_baa91f74e099415791cb40e07207a7fe: {r: 0.1, g: 0, b: 0, a: 0}
+    - Vector2_baa91f74e099415791cb40e07207a7fe_1: {r: 0.2, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
