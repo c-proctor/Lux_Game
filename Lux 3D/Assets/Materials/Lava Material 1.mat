@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lava Material
+  m_Name: Lava Material 1
   m_Shader: {fileID: -6465566751694194690, guid: 638a2a22a787a4b42a1848df886981a6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -33,7 +33,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_1d1182e9cf5242a7b85d00f6c8dcf392: 0.21
-    - Vector1_2d2009711bf745a595848f53643d4a09: 2
+    - Vector1_2d2009711bf745a595848f53643d4a09: 10
+    - Vector1_65877b317bb8412ab513ec908ec4e3ef: 0.2
     - Vector1_830b96122cfd4f95b18f92ebb62a4870: 0.23
     - Vector1_8c8e09395ecb401998cb366449bd55b2: 2
     - Vector1_8e27f77cd69e4f998156e3913b786b5f: 100
