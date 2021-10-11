@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3557226797792604230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.96, y: -1.09, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.38386, y: 0.38386, z: 0.38386}
   m_Children:
   - {fileID: 3631636822390528932}
   - {fileID: 3284042507540021171}
@@ -120,9 +120,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4185566165681957628}
     m_Modifications:
+    - target: {fileID: 2518186725770602697, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.63172
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.63172
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.63172
       objectReference: {fileID: 0}
     - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -130,11 +146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6870003
+      value: 4.959
       objectReference: {fileID: 0}
     - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.6449738
+      value: -1.6443
       objectReference: {fileID: 0}
     - target: {fileID: 3284042507344530686, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -188,6 +204,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4800873232229977153, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.28
+      objectReference: {fileID: 0}
     - target: {fileID: 5101587484197493897, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: m_Name
       value: Fire Particles
@@ -204,13 +224,33 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8046694369592438573, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8046694369592438574, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: LightsModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8046694369592438574, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046694369592438574, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029014949441372177, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: InitialModule.rotation3D
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029014949441372177, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029014949441372177, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 523aaf235eea4ee4e9e4b997d86e4af3, type: 3}

@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.5566038, g: 0.19584793, b: 0.13389996, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 50
-  m_LinearFogEnd: 250
+  m_LinearFogStart: 100
+  m_LinearFogEnd: 200
   m_AmbientSkyColor: {r: 1, g: 0.68094045, b: 0.4764151, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 7ea31b23cbbb77e4594232bf52865913, type: 2}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.583
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -421,63 +421,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd67d6d7261f2d9409020d2c9887f7dd, type: 3}
---- !u!1001 &555828346
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 42.299248
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 42.299248
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 42.299248
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 211.6466
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 77.44142
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 274.2959
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 5.93
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 146.484
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7635826562936255635, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 49dbfc85de31e30449efd61a42fb5773, type: 2}
-    - target: {fileID: 919132149155446097, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
-      propertyPath: m_Name
-      value: Lava
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: eefef5dfcdba6f84a93b369e8a63baeb, type: 3}
 --- !u!1 &724492286 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1345579878571375623, guid: 3a682a7617e085344ad38ea09363464a, type: 3}
@@ -792,7 +735,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7b8a52c9d216b634c879aae04ad32128, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7b8a52c9d216b634c879aae04ad32128, type: 3}
       propertyPath: m_LocalScale.x
