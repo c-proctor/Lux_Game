@@ -37,8 +37,16 @@ public class PlayerBullet : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player");
         }
-        transform.LookAt(target.GetComponent<EnemyAI>().bulletPoint.transform);
-        Debug.Log(target);
+        else if (target.GetComponent<EnemyAI>() != null)
+        {
+            transform.LookAt(target.GetComponent<EnemyAI>().bulletPoint.transform);
+        }
+        else
+        {
+            transform.LookAt(target.transform);
+        }
+        
+        //Debug.Log(target);
     }
     public void SwitchType(BulletType bulletType)
     {
@@ -56,7 +64,8 @@ public class PlayerBullet : MonoBehaviour
     void Update()
     {
         // Moves towards the player's position when it was shot
-        transform.position += transform.up * speed * Time.deltaTime;
+        //transform.position += transform.up * speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider collider)
     {

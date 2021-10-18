@@ -50,6 +50,12 @@ public class ThirdPersonPlayer : MonoBehaviour
     private GameObject currentTarget;
     private bool targetReset;
     public float lockOnAngle = 30f;
+    
+    //New targeting system attempt
+    public static List<TargetObjectScript> nearbyTargets = new List<TargetObjectScript>();
+    int lockedTarget;
+    bool lockedOn;
+    TargetObjectScript target;
 
     public GameObject currentPlayerBullet;
 
@@ -91,6 +97,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     public void Start()
     {
         jump = new Vector3(0f, jumpHeight, 0f);
+        lockedOn = false;
+        lockedTarget = 0;
     }
 
     // Shoot projectile (based on fire rate and if holding down shoot button)
@@ -102,7 +110,11 @@ public class ThirdPersonPlayer : MonoBehaviour
             //Debug.Log(playerBullet.GetComponent<PlayerBullet>().GetTarget());
             currentPlayerBullet = Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
             currentPlayerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
-            currentPlayerBullet.GetComponent<PlayerBullet>().SetTarget(currentTarget);
+            if (target != null)
+            {
+                currentPlayerBullet.GetComponent<PlayerBullet>().SetTarget(target.gameObject);
+            }
+            Debug.Log(currentPlayerBullet.GetComponent<PlayerBullet>().GetTarget());
             currentPlayerBullet.GetComponent<PlayerBullet>().Retarget();
             nextFireTime = Time.time + fireRate;
             AudioSource.PlayClipAtPoint(Fireclip, transform.position, 1.0f);
@@ -193,7 +205,35 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        //Debug.Log(nearbyTargets.Count);
+
+        if(CameraFocus && !lockedOn)
+        {
+            if (nearbyTargets.Count >= 1)
+            {
+                lockedOn = true;
+
+                lockedTarget = 0;
+                target = nearbyTargets[lockedTarget];
+                //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
+            }
+        }
+        else if((CameraFocus && lockedOn) || nearbyTargets.Count == 0)
+        {
+            lockedOn = false;
+            lockedTarget = 0;
+            target = null;
+            //Debug.Log("Not targeting");
+        }
+        if(lockedOn)
+        {
+            target = nearbyTargets[lockedTarget];
+            //Debug.Log(target.gameObject);
+            //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
+        }
+
         //using https://amirazmi.net/targeting-system/ tutorial
+        /*
         if (currentTarget == null)
         {
             targetReset = false;
@@ -294,6 +334,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 currentTarget = null;
             }
         }
+        */
         
         
     }
