@@ -81,6 +81,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Next Dialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""8042aacd-764b-49c8-b473-7e5badba95dc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -372,23 +380,23 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1eef873e-65cf-447e-a5bd-b52dcfa08ca4"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b91e8cbe-7b4d-4416-999c-3c5435970559"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b177646b-9c43-4ba8-93a5-d66d0792bf44"",
+                    ""path"": ""<Keyboard>/Space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Next Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -974,6 +982,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
         m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_NextDialogue = m_Player.FindAction("Next Dialogue", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1043,6 +1052,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Reset;
     private readonly InputAction m_Player_TargetLock;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_NextDialogue;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -1055,6 +1065,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Reset => m_Wrapper.m_Player_Reset;
         public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @NextDialogue => m_Wrapper.m_Player_NextDialogue;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1088,6 +1099,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @NextDialogue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
+                @NextDialogue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
+                @NextDialogue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1116,6 +1130,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @NextDialogue.started += instance.OnNextDialogue;
+                @NextDialogue.performed += instance.OnNextDialogue;
+                @NextDialogue.canceled += instance.OnNextDialogue;
             }
         }
     }
@@ -1280,6 +1297,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnReset(InputAction.CallbackContext context);
         void OnTargetLock(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnNextDialogue(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

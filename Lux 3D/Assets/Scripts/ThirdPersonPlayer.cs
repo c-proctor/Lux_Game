@@ -20,6 +20,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public AudioClip Fireclip;
     public AudioClip BackgroundMusic;
     private bool CameraFocus = false;
+    private GameObject dialogueSpoken;
 
     // By default, it will be private (because it is a class, we don't have to say private beforehand)  
     Vector2 currentMove;
@@ -130,6 +131,14 @@ public class ThirdPersonPlayer : MonoBehaviour
         selectedType = PlayerBullet.BulletType.Fire;
     }
 
+    public void NextDialogueOption(InputAction.CallbackContext context)
+    {
+        if (dialogueSpoken != null)
+        {
+            dialogueSpoken.GetComponent<DialogueTrigger>().NextOption();
+        }
+    }
+
     public void RestartLevel(InputAction.CallbackContext context)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -231,112 +240,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             //Debug.Log(target.gameObject);
             //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
         }
-
-        //using https://amirazmi.net/targeting-system/ tutorial
-        /*
-        if (currentTarget == null)
-        {
-            targetReset = false;
-        }
-        if (shootableTargets != null)
-        {
-            for(int ii = shootableTargets.Count - 1; ii>= 0; --ii)
-            {
-                if(shootableTargets[ii] == null || !shootableTargets[ii].activeInHierarchy)
-                {
-                    shootableTargets.RemoveAt(ii);
-                    shootableTargetsCount--;
-                }
-            }
-        }
-        if(CameraFocus && shootableTargetsCount > 0)
-        {
-            List<GameObject> SortedShootableTargets = shootableTargets.OrderBy(gameObjects =>
-            {
-                Vector3 target_direction = gameObjects.transform.position - playerCamera.position;
-
-                var cameraForward = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
-
-                var targetDir = new Vector2(target_direction.x, target_direction.z);
-
-                float angle = Vector2.Angle(cameraForward, targetDir);
-
-                return angle;
-            }).ToList();
-            for (var ii = 0; ii < shootableTargets.Count(); ii++)
-            {
-                shootableTargets[ii] = SortedShootableTargets[ii];
-                if(!shootableTargets[ii].activeInHierarchy)
-                {
-                    shootableTargets.RemoveAt(ii);
-                    shootableTargetsCount--;
-                }
-            }
-            currentTarget = shootableTargets.First();
-
-            targetReset = !targetReset;
-        }
-        if(targetReset && shootableTargetsCount > 0 && currentTarget != null && currentTarget.activeInHierarchy)
-        {
-            Vector3 targetDirection = currentTarget.transform.position - playerCamera.position;
-
-            var cameraForward = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
-
-            var targetDir = new Vector2(targetDirection.x, targetDirection.z);
-
-            float angle = Vector2.Angle(cameraForward, targetDir);
-
-            if (angle < Mathf.Abs(lockOnAngle))
-            {
-                List<GameObject> SortedShootableTargets = shootableTargets.OrderBy(gameObjects =>
-                {
-                    Vector3 target_direction3 = gameObjects.transform.position - playerCamera.position;
-
-                    var cameraForward = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
-
-                    var targetDir = new Vector2(target_direction3.x, target_direction3.z);
-
-                    float angle = Vector2.SignedAngle(cameraForward, targetDir);
-
-                    return angle;
-                }).ToList();
-                for (var ii = 0; ii < shootableTargets.Count(); ++ii)
-                {
-                    shootableTargets[ii] = SortedShootableTargets[ii];
-                }
-                if (shootableTargets.IndexOf(currentTarget) >= 0)
-                {
-                    GameObject nextTarget = shootableTargets[shootableTargets.IndexOf(currentTarget)];
-
-                    Vector3 target_direction3 = nextTarget.transform.position - playerCamera.position;
-
-                    var cameraForward_angled = new Vector2(playerCamera.forward.x, playerCamera.forward.z);
-
-                    var targetDir_angled = new Vector2(target_direction3.x, target_direction3.z);
-
-                    float angled_shot = Vector2.Angle(cameraForward_angled, targetDir_angled);
-
-                    if (angled_shot < Mathf.Abs(lockOnAngle))
-                    {
-                        currentTarget = shootableTargets[shootableTargets.IndexOf(currentTarget)];
-                    }
-                }
-            }
-            else
-            {
-
-            }
-        }
-        else
-        {
-            if(currentTarget != null)
-            {
-                currentTarget = null;
-            }
-        }
-        */
-        
-        
     }
 
     private void OnEnable()
@@ -373,6 +276,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             shootableTargetsCount++;
             shootableTargets.Add(other.gameObject);
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -381,5 +285,10 @@ public class ThirdPersonPlayer : MonoBehaviour
             shootableTargetsCount--;
             shootableTargets.Remove(other.gameObject);
         }
+    }
+    
+    public void SetDialogueSpoken(GameObject dialogue)
+    {
+        dialogueSpoken = dialogue;
     }
 }

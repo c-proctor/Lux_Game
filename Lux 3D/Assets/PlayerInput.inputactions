@@ -68,6 +68,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Next Dialogue",
+                    "type": "Button",
+                    "id": "8042aacd-764b-49c8-b473-7e5badba95dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -359,23 +367,23 @@
                 },
                 {
                     "name": "",
-                    "id": "1eef873e-65cf-447e-a5bd-b52dcfa08ca4",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b91e8cbe-7b4d-4416-999c-3c5435970559",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b177646b-9c43-4ba8-93a5-d66d0792bf44",
+                    "path": "<Keyboard>/Space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Next Dialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
