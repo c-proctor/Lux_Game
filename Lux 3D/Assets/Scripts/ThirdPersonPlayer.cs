@@ -133,7 +133,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public void NextDialogueOption(InputAction.CallbackContext context)
     {
-        if (dialogueSpoken != null)
+        if (dialogueSpoken != null && context.performed)
         {
             dialogueSpoken.GetComponent<DialogueTrigger>().NextOption();
         }
