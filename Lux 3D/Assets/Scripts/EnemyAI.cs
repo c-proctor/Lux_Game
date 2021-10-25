@@ -33,12 +33,6 @@ public class EnemyAI : MonoBehaviour
     {
         agent.destination = player.position;
         distanceFromPlayer = agent.remainingDistance;
-        /*
-        if(showDistance)
-        {
-            Debug.Log(distanceFromPlayer);
-        }
-        */
         // Keep an eye on this if statement
         if (distanceFromPlayer < lineOfSight && distanceFromPlayer > attackRange)
         {
@@ -47,20 +41,10 @@ public class EnemyAI : MonoBehaviour
             agent.destination = player.position;
         }
         else if (distanceFromPlayer <= attackRange && nextFireTime < Time.time)
-        {
-            agent.acceleration = 8000; // Makes the player instantly stop (as acceleration also controls deceleration)
-            agent.isStopped = true; // Stops pathing the AI to the player
-            RaycastHit obstruction;
-            int layerMask = 1 << 8;
-            layerMask = ~layerMask;
-            if (Physics.Raycast(bulletPoint.transform.position, player.gameObject.GetComponent<ThirdPersonPlayer>().bulletPoint.transform.position - bulletPoint.transform.position, out obstruction, Mathf.Infinity))
-            {
-                Debug.DrawRay(bulletPoint.transform.position, (player.gameObject.GetComponent<ThirdPersonPlayer>().bulletPoint.transform.position - bulletPoint.transform.position) * obstruction.distance, Color.yellow);
-                if (obstruction.transform.tag == "player")
-                {
-                    Instantiate(bullet, bulletPoint.transform.position, Quaternion.identity); // Spawn boolet
-                }
-            }
+        { 
+            agent.acceleration = 8000;
+            agent.isStopped = true; 
+            Instantiate(bullet, bulletPoint.transform.position, Quaternion.identity); // Spawn boolet
             nextFireTime = Time.time + fireRate; // Sets the firing delay
         }
         else if(distanceFromPlayer > lineOfSight || distanceFromPlayer < attackRange)
