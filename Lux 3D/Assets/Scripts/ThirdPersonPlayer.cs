@@ -58,7 +58,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     bool lockedOn;
     TargetObjectScript target;
 
-    public GameObject currentPlayerBullet;
+    private GameObject currentPlayerBullet;
 
     // In case we want more movement types
     public enum MovementType

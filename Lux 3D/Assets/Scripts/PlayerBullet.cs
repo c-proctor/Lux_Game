@@ -9,6 +9,7 @@ public class PlayerBullet : MonoBehaviour
     public int speed;
     Rigidbody bulletRB;
     public Material iceMat, fireMat;
+    Vector3 targetVec3;
 
     public enum BulletType
     {
@@ -36,6 +37,9 @@ public class PlayerBullet : MonoBehaviour
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player");
+            transform.LookAt(target.transform.up);
+            Debug.Log("TARGETING PLAYER!");
+            targetVec3 = target.transform.forward;
         }
         else if (target.GetComponent<EnemyAI>() != null)
         {
@@ -64,8 +68,18 @@ public class PlayerBullet : MonoBehaviour
     void Update()
     {
         // Moves towards the player's position when it was shot
-        //transform.position += transform.up * speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        // transform.position += targetVec3 * speed * Time.deltaTime;
+        
+        if (target.GetComponent<ThirdPersonPlayer>() == null)
+        {
+            Debug.Log("This is using not null and is: " + target);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position += targetVec3 * speed * Time.deltaTime;
+        }
+        
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -80,10 +94,16 @@ public class PlayerBullet : MonoBehaviour
             collider.gameObject.GetComponent<Fire>().DestroySelf();
             Destroy(gameObject);
         }
-        if(collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
+        else if(collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
+        {
+            Debug.Log(collider.gameObject);
+            Destroy(gameObject);
+        }
+        else if(collider.gameObject.GetComponent<DialogueTrigger>() == null && collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
         {
             Destroy(gameObject);
         }
+        
     }
 
     public void SetTarget(GameObject newTarget)

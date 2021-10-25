@@ -399,6 +399,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Next Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7982775d-4d6e-4355-b8df-49f0f48a63bf"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Next Dialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },

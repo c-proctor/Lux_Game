@@ -27,13 +27,18 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("Player"))
+        
+        if(other.tag.Equals("Player") && other.GetType() == typeof(MeshCollider))
         {
             other.gameObject.GetComponent<ThirdPersonPlayer>().TakeHealth(10);
             Destroy(gameObject);
         }
-        else if(!other.tag.Equals("Enemy"))
+        else if(!other.tag.Equals("Enemy") && !(other.GetType() == typeof(SphereCollider) && other.tag.Equals("Player")))
         {
+            if(other.gameObject.GetComponent<ThirdPersonPlayer>() != null)
+            {
+                other.gameObject.GetComponent<ThirdPersonPlayer>().TakeHealth(10);
+            }
             Destroy(gameObject);
         }
     }
