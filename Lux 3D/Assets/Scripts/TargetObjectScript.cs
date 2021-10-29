@@ -37,7 +37,7 @@ public class TargetObjectScript : MonoBehaviour
 
         Physics.Raycast(fromPos, direction, out hit);
 
-        if (onScreen && addOnce && hit.transform.tag == "Player" && Vector3.Distance(toPos,fromPos) < 30.0)
+        if (onScreen && addOnce && hit.transform.tag == "Player" && Vector3.Distance(toPos,fromPos) < 50.0)
         {
             addOnce = false;
             ThirdPersonPlayer.nearbyTargets.Add(this);

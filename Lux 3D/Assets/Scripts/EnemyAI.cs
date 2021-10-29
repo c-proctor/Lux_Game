@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
     float defaultAcc;
     NavMeshAgent agent;
     public bool showDistance = false;
+    public int Health = 50;
 
     void Start()
     {
@@ -52,7 +53,16 @@ public class EnemyAI : MonoBehaviour
             agent.acceleration = 8000;
             agent.isStopped = true;            
         }
+        if(Health <= 0)
+        {
+            Destroy(this);
+        }
 
+    }
+
+    public void TakeHealth(int lostHealth)
+    {
+        Health -= lostHealth;
     }
 
     private void OnDrawGizmosSelected()

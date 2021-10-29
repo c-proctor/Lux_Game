@@ -75,7 +75,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Next Target"",
                     ""type"": ""Button"",
                     ""id"": ""24637857-6830-434f-b61a-b181e5be13c8"",
                     ""expectedControlType"": ""Button"",
@@ -381,11 +381,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b91e8cbe-7b4d-4416-999c-3c5435970559"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/Q"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Next Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dc723fe-df7b-44c0-8dac-a88e85ceef29"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Next Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -992,7 +1003,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_TypeIce = m_Player.FindAction("Type Ice", throwIfNotFound: true);
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
         m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_NextTarget = m_Player.FindAction("Next Target", throwIfNotFound: true);
         m_Player_NextDialogue = m_Player.FindAction("Next Dialogue", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1062,7 +1073,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_TypeIce;
     private readonly InputAction m_Player_Reset;
     private readonly InputAction m_Player_TargetLock;
-    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_NextTarget;
     private readonly InputAction m_Player_NextDialogue;
     public struct PlayerActions
     {
@@ -1075,7 +1086,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @TypeIce => m_Wrapper.m_Player_TypeIce;
         public InputAction @Reset => m_Wrapper.m_Player_Reset;
         public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @NextTarget => m_Wrapper.m_Player_NextTarget;
         public InputAction @NextDialogue => m_Wrapper.m_Player_NextDialogue;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -1107,9 +1118,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @TargetLock.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                 @TargetLock.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
                 @TargetLock.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTargetLock;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @NextTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextTarget;
+                @NextTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextTarget;
+                @NextTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextTarget;
                 @NextDialogue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
                 @NextDialogue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
                 @NextDialogue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
@@ -1138,9 +1149,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @TargetLock.started += instance.OnTargetLock;
                 @TargetLock.performed += instance.OnTargetLock;
                 @TargetLock.canceled += instance.OnTargetLock;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @NextTarget.started += instance.OnNextTarget;
+                @NextTarget.performed += instance.OnNextTarget;
+                @NextTarget.canceled += instance.OnNextTarget;
                 @NextDialogue.started += instance.OnNextDialogue;
                 @NextDialogue.performed += instance.OnNextDialogue;
                 @NextDialogue.canceled += instance.OnNextDialogue;
@@ -1307,7 +1318,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnTypeIce(InputAction.CallbackContext context);
         void OnReset(InputAction.CallbackContext context);
         void OnTargetLock(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnNextTarget(InputAction.CallbackContext context);
         void OnNextDialogue(InputAction.CallbackContext context);
     }
     public interface IUIActions

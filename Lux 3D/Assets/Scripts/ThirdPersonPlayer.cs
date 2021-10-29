@@ -51,10 +51,13 @@ public class ThirdPersonPlayer : MonoBehaviour
     private GameObject currentTarget;
     private bool targetReset;
     public float lockOnAngle = 30f;
+    public GameObject targetingCircleIce;
+    public GameObject targetingCircleFire;
+    private GameObject targetCircle = null;
     
     //New targeting system attempt
     public static List<TargetObjectScript> nearbyTargets = new List<TargetObjectScript>();
-    int lockedTarget;
+    int lockedTarget = 0;
     bool lockedOn;
     TargetObjectScript target;
 
@@ -144,10 +147,19 @@ public class ThirdPersonPlayer : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void JumpPlayer(InputAction.CallbackContext context)
+    public void NextTarget(InputAction.CallbackContext context)
     {
-        //playerRB.AddForce(new Vector3(0f, jumpHeight ,0f),ForceMode.Impulse);
-        //jumpPressed = context.performed;
+        if(nearbyTargets.Count > 0)
+        {
+            if(lockedTarget == nearbyTargets.Count)
+            {
+                lockedTarget = 0;
+            }
+            else
+            {
+                lockedTarget++;
+            }
+        }
     }
 
     public void LockCamera(InputAction.CallbackContext context)
@@ -222,14 +234,31 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 lockedOn = true;
 
-                lockedTarget = 0;
+                //lockedTarget = 0;
                 target = nearbyTargets[lockedTarget];
-                //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
+                if (targetCircle == null)
+                {
+                    switch (selectedType)
+                    {
+                        case PlayerBullet.BulletType.Fire:
+                            targetCircle = Instantiate(targetingCircleFire, target.transform);
+                            break;
+                        case PlayerBullet.BulletType.Ice:
+                            targetCircle = Instantiate(targetingCircleIce, target.transform);
+                            break;
+                    }
+                }
+                else
+                {
+                    targetCircle.transform.position = target.transform.position;
+                }
             }
         }
         else if((CameraFocus && lockedOn) || nearbyTargets.Count == 0)
         {
             lockedOn = false;
+            Destroy(targetCircle);
+            targetCircle = null;
             lockedTarget = 0;
             target = null;
             //Debug.Log("Not targeting");
@@ -237,6 +266,23 @@ public class ThirdPersonPlayer : MonoBehaviour
         if(lockedOn)
         {
             target = nearbyTargets[lockedTarget];
+            if (targetCircle == null)
+            {
+                //Debug.Log("Make shit");
+                switch (selectedType)
+                {
+                    case PlayerBullet.BulletType.Fire:
+                        targetCircle = Instantiate(targetingCircleFire, target.transform);
+                        break;
+                    case PlayerBullet.BulletType.Ice:
+                        targetCircle = Instantiate(targetingCircleIce, target.transform);
+                        break;
+                }
+            }
+            else
+            {
+                targetCircle.transform.position = target.transform.position;
+            }
             //Debug.Log(target.gameObject);
             //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
         }

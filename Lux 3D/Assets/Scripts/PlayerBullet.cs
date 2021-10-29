@@ -10,6 +10,7 @@ public class PlayerBullet : MonoBehaviour
     Rigidbody bulletRB;
     public Material iceMat, fireMat;
     Vector3 targetVec3;
+    public int Damage = 50;
 
     public enum BulletType
     {
@@ -96,6 +97,10 @@ public class PlayerBullet : MonoBehaviour
         }
         else if(collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
         {
+            if(collider.gameObject.GetComponent<EnemyAI>() != null)
+            {
+                collider.gameObject.GetComponent<EnemyAI>().TakeHealth(Damage);
+            }
             Debug.Log(collider.gameObject);
             Destroy(gameObject);
         }

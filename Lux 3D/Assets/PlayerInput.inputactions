@@ -62,7 +62,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "Next Target",
                     "type": "Button",
                     "id": "24637857-6830-434f-b61a-b181e5be13c8",
                     "expectedControlType": "Button",
@@ -368,11 +368,22 @@
                 {
                     "name": "",
                     "id": "b91e8cbe-7b4d-4416-999c-3c5435970559",
-                    "path": "",
+                    "path": "<Keyboard>/Q",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Jump",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Next Target",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2dc723fe-df7b-44c0-8dac-a88e85ceef29",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Next Target",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
