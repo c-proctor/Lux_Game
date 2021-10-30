@@ -7,6 +7,7 @@ public class QuestSnowman : MonoBehaviour
     public GameObject QuestCompletedPrefab;
     Mesh CompletedMesh;
     public QuestItemCheck PairedQuest;
+    public BossDefeated bossStatus;
     bool changed = false;
     // Start is called before the first frame update
     void Start()
