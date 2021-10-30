@@ -89,6 +89,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause Game"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f56f653-359a-47a5-a74e-8c343563f2c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -381,7 +389,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b91e8cbe-7b4d-4416-999c-3c5435970559"",
-                    ""path"": ""<Keyboard>/Q"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -419,6 +427,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Next Dialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de4088c9-e57a-48a0-b1bf-6e3e6272c912"",
+                    ""path"": ""<Keyboard>/Escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause Game"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e543cbc6-2e68-44fc-b64e-50ea8fa83cbd"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause Game"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1005,6 +1035,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_TargetLock = m_Player.FindAction("Target Lock", throwIfNotFound: true);
         m_Player_NextTarget = m_Player.FindAction("Next Target", throwIfNotFound: true);
         m_Player_NextDialogue = m_Player.FindAction("Next Dialogue", throwIfNotFound: true);
+        m_Player_PauseGame = m_Player.FindAction("Pause Game", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1075,6 +1106,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_TargetLock;
     private readonly InputAction m_Player_NextTarget;
     private readonly InputAction m_Player_NextDialogue;
+    private readonly InputAction m_Player_PauseGame;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -1088,6 +1120,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @TargetLock => m_Wrapper.m_Player_TargetLock;
         public InputAction @NextTarget => m_Wrapper.m_Player_NextTarget;
         public InputAction @NextDialogue => m_Wrapper.m_Player_NextDialogue;
+        public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1124,6 +1157,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @NextDialogue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
                 @NextDialogue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
                 @NextDialogue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextDialogue;
+                @PauseGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1155,6 +1191,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @NextDialogue.started += instance.OnNextDialogue;
                 @NextDialogue.performed += instance.OnNextDialogue;
                 @NextDialogue.canceled += instance.OnNextDialogue;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -1320,6 +1359,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnTargetLock(InputAction.CallbackContext context);
         void OnNextTarget(InputAction.CallbackContext context);
         void OnNextDialogue(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

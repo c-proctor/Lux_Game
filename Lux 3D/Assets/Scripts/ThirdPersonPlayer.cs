@@ -40,6 +40,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     Rigidbody playerRB;
     float turnSmoothVel;
     Vector3 moveVector;
+    public GameObject pauseMenu;
 
     MovementType moveType = MovementType.Normal;
     private float nextFireTime;
@@ -78,8 +79,11 @@ public class ThirdPersonPlayer : MonoBehaviour
         //Leave this be, if it works, it works. Gets movement based inputs
         input.Player.Move.performed += ctx =>
         {
-            currentMove = ctx.ReadValue<Vector2>();
-            movePressed = currentMove.x != 0 || currentMove.y != 0;
+            if (Time.timeScale != 0)
+            {
+                currentMove = ctx.ReadValue<Vector2>();
+                movePressed = currentMove.x != 0 || currentMove.y != 0;
+            }
         };
         /*  re-enable AFTER PGF
         if (PlayerPrefs.HasKey("PlayerHealth"))
@@ -108,20 +112,23 @@ public class ThirdPersonPlayer : MonoBehaviour
     // Shoot projectile (based on fire rate and if holding down shoot button)
     public void ShootProjectile(InputAction.CallbackContext context)
     {
-        if(nextFireTime < Time.time && context.performed)
+        if (Time.timeScale != 0)
         {
-            
-            //Debug.Log(playerBullet.GetComponent<PlayerBullet>().GetTarget());
-            currentPlayerBullet = Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
-            currentPlayerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
-            if (target != null)
+            if (nextFireTime < Time.time && context.performed)
             {
-                currentPlayerBullet.GetComponent<PlayerBullet>().SetTarget(target.gameObject);
+
+                //Debug.Log(playerBullet.GetComponent<PlayerBullet>().GetTarget());
+                currentPlayerBullet = Instantiate(playerBullet, bulletPoint.transform.position, bulletPoint.transform.rotation);
+                currentPlayerBullet.GetComponent<PlayerBullet>().SwitchType(selectedType);
+                if (target != null)
+                {
+                    currentPlayerBullet.GetComponent<PlayerBullet>().SetTarget(target.gameObject);
+                }
+                Debug.Log(currentPlayerBullet.GetComponent<PlayerBullet>().GetTarget());
+                currentPlayerBullet.GetComponent<PlayerBullet>().Retarget();
+                nextFireTime = Time.time + fireRate;
+                AudioSource.PlayClipAtPoint(Fireclip, transform.position, 1.0f);
             }
-            Debug.Log(currentPlayerBullet.GetComponent<PlayerBullet>().GetTarget());
-            currentPlayerBullet.GetComponent<PlayerBullet>().Retarget();
-            nextFireTime = Time.time + fireRate;
-            AudioSource.PlayClipAtPoint(Fireclip, transform.position, 1.0f);
         }
     }
     // For changing weapon type (can setup as an if check when having actual pickups)
@@ -136,9 +143,12 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public void NextDialogueOption(InputAction.CallbackContext context)
     {
-        if (dialogueSpoken != null && context.performed)
+        if (Time.timeScale != 0)
         {
-            dialogueSpoken.GetComponent<DialogueTrigger>().NextOption();
+            if (dialogueSpoken != null && context.performed)
+            {
+                dialogueSpoken.GetComponent<DialogueTrigger>().NextOption();
+            }
         }
     }
 
@@ -149,17 +159,26 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public void NextTarget(InputAction.CallbackContext context)
     {
-        if(nearbyTargets.Count > 0)
+        if (Time.timeScale != 0)
         {
-            if(lockedTarget == nearbyTargets.Count)
+            Debug.Log(nearbyTargets.Count);
+            if (lockedTarget >= nearbyTargets.Count - 1)
             {
                 lockedTarget = 0;
+                target = nearbyTargets[lockedTarget];
             }
             else
             {
                 lockedTarget++;
+                target = nearbyTargets[lockedTarget];
             }
         }
+    }
+
+    public void PauseMenu(InputAction.CallbackContext context)
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
     }
 
     public void LockCamera(InputAction.CallbackContext context)
@@ -227,8 +246,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         //Debug.Log(nearbyTargets.Count);
-
-        if(CameraFocus && !lockedOn)
+        if (CameraFocus && !lockedOn)
         {
             if (nearbyTargets.Count >= 1)
             {
@@ -254,7 +272,9 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
         }
-        else if((CameraFocus && lockedOn) || nearbyTargets.Count == 0)
+        
+        //When you are not focusing and have locked on or there are no targets
+        else if((!CameraFocus && lockedOn) || nearbyTargets.Count == 0)
         {
             lockedOn = false;
             Destroy(targetCircle);
@@ -268,7 +288,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             target = nearbyTargets[lockedTarget];
             if (targetCircle == null)
             {
-                //Debug.Log("Make shit");
                 switch (selectedType)
                 {
                     case PlayerBullet.BulletType.Fire:
@@ -283,6 +302,8 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 targetCircle.transform.position = target.transform.position;
             }
+
+            Debug.Log(lockedTarget);
             //Debug.Log(target.gameObject);
             //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
         }

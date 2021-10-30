@@ -20,6 +20,16 @@ public class GameplayUI : MonoBehaviour
     void Update()
     {
         PlayerHealth.text = "Health: " + player.GetHealth().ToString();
+        if (Time.timeScale == 1)
+        {
+            PlayerHealth.gameObject.SetActive(true);
+            ItemsCollected.gameObject.SetActive(true);
+        }
+        else
+        {
+            PlayerHealth.gameObject.SetActive(false);
+            ItemsCollected.gameObject.SetActive(false);
+        }
     }
     public void ItemGot()
     {
