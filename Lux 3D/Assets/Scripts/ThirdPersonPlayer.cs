@@ -245,7 +245,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        //Debug.Log(nearbyTargets.Count);
+
         if (CameraFocus && !lockedOn)
         {
             if (nearbyTargets.Count >= 1)

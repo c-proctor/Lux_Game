@@ -107,15 +107,14 @@ public class PlayerBullet : MonoBehaviour
             if(collider.gameObject.GetComponent<EnemyAI>() != null)
             {
                 collider.gameObject.GetComponent<EnemyAI>().TakeHealth(Damage);
+                Destroy(gameObject);
             }
-            Debug.Log(collider.gameObject);
-            Destroy(gameObject);
         }
-        else if(collider.gameObject.GetComponent<DialogueTrigger>() == null && collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
+        else if(collider.gameObject.GetComponent<DialogueTrigger>() != null && collider.gameObject.GetComponent<ThirdPersonPlayer>() == null)
         {
             Destroy(gameObject);
         }
-        
+
     }
 
     public void SetTarget(GameObject newTarget)
