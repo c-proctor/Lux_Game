@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ice World.unity
     guid: 7600faf2717f821449060f0167bd3838
+  - enabled: 1
+    path: Assets/Scenes/Fire World.unity
+    guid: 935ae0528b0cf2e429e7faa56a600553
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 35267a2971a676d4ca29b0c1c12e8d00
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2bb334ff37212d843926b68d764b9626, type: 2}

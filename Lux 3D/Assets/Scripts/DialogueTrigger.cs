@@ -10,10 +10,12 @@ public class DialogueTrigger : MonoBehaviour
     private int dialogueNum = 1;
     public Text dialogueTextBox;
     private bool activateDialogue = false;
+    public GameObject[] ActivatedGameObjects;
     // Start is called before the first frame update
     void Start()
     {
         dialogueNum = 0;
+        dialogueTextBox = GameObject.FindGameObjectWithTag("Dialogue Text Box").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -38,10 +40,15 @@ public class DialogueTrigger : MonoBehaviour
         if(dialogueNum + 1 >= dialogue.Length)
         {
             dialogueNum = 1;
+            
         }
         else
         {
             dialogueNum++;
+        }
+        if(dialogueNum >= dialogue.Length - 2)
+        {
+            ActivateOtherGameObjects();
         }
         dialogueTextBox.text = dialogue[dialogueNum];
     }
@@ -56,5 +63,22 @@ public class DialogueTrigger : MonoBehaviour
             dialogueNum = 0;
             other.gameObject.GetComponent<ThirdPersonPlayer>().SetDialogueSpoken(null);
         }
+    }
+    
+    private void ActivateOtherGameObjects()
+    {
+        for (int ii = 0; ii < ActivatedGameObjects.Length; ++ii)
+        {
+            ActivatedGameObjects[ii].SetActive(true);
+        }
+    }
+
+    public int GetDialogueCount()
+    {
+        return (dialogueNum);
+    }
+    public bool DialogueCompleted()
+    {
+        return (dialogueNum >= dialogue.Length - 1);
     }
 }

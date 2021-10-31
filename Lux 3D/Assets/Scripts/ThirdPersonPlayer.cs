@@ -259,10 +259,24 @@ public class ThirdPersonPlayer : MonoBehaviour
                     switch (selectedType)
                     {
                         case PlayerBullet.BulletType.Fire:
-                            targetCircle = Instantiate(targetingCircleFire, target.transform);
+                            if (target.gameObject.tag == "Enemy")
+                            {
+                                targetCircle = Instantiate(targetingCircleFire, target.gameObject.GetComponent<EnemyAI>().bulletPoint.transform);
+                            }
+                            else
+                            {
+                                targetCircle = Instantiate(targetingCircleFire, target.transform);
+                            }
                             break;
                         case PlayerBullet.BulletType.Ice:
-                            targetCircle = Instantiate(targetingCircleIce, target.transform);
+                            if (target.gameObject.tag == "Enemy")
+                            {
+                                targetCircle = Instantiate(targetingCircleIce, target.gameObject.GetComponent<EnemyAI>().bulletPoint.transform);
+                            }
+                            else
+                            {
+                                targetCircle = Instantiate(targetingCircleIce, target.transform);
+                            }
                             break;
                     }
                 }
@@ -291,10 +305,24 @@ public class ThirdPersonPlayer : MonoBehaviour
                 switch (selectedType)
                 {
                     case PlayerBullet.BulletType.Fire:
-                        targetCircle = Instantiate(targetingCircleFire, target.transform);
+                        if (target.gameObject.tag == "Enemy")
+                        {
+                            targetCircle = Instantiate(targetingCircleFire, target.gameObject.GetComponent<EnemyAI>().bulletPoint.transform);
+                        }
+                        else
+                        {
+                            targetCircle = Instantiate(targetingCircleFire, target.transform);
+                        }
                         break;
                     case PlayerBullet.BulletType.Ice:
-                        targetCircle = Instantiate(targetingCircleIce, target.transform);
+                        if (target.gameObject.tag == "Enemy")
+                        {
+                            targetCircle = Instantiate(targetingCircleIce, target.gameObject.GetComponent<EnemyAI>().bulletPoint.transform);
+                        }
+                        else
+                        {
+                            targetCircle = Instantiate(targetingCircleIce, target.transform);
+                        }
                         break;
                 }
             }
@@ -353,7 +381,15 @@ public class ThirdPersonPlayer : MonoBehaviour
             shootableTargets.Remove(other.gameObject);
         }
     }
-    
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Lava")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
     public void SetDialogueSpoken(GameObject dialogue)
     {
         dialogueSpoken = dialogue;

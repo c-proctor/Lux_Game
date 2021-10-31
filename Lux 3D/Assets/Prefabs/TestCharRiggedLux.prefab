@@ -309,8 +309,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07912918, y: -0.08152421, z: 0.006493121, w: 0.99350405}
-  m_LocalPosition: {x: 0.801239, y: 1.4236965, z: -3.009037}
+  m_LocalRotation: {x: 0.07912914, y: -0.08152378, z: 0.0064930827, w: 0.99350405}
+  m_LocalPosition: {x: 447.45422, y: 93.2137, z: 424.17023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6951322536454023384}
@@ -457,7 +457,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139928740}
-  m_LocalRotation: {x: 0.07552375, y: -0.08154722, z: 0.0061972695, w: 0.9937846}
+  m_LocalRotation: {x: 0.075523734, y: -0.081547625, z: 0.0061972993, w: 0.9937846}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -535,7 +535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212414129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5233154, y: 0.73259425, z: -3.1672516}
+  m_LocalPosition: {x: 0.5233183, y: 0.7325943, z: -3.167252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2094874377}
@@ -855,7 +855,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980738376}
-  m_LocalRotation: {x: 0.09354001, y: -0.08142138, z: 0.007675635, w: 0.992251}
+  m_LocalRotation: {x: 0.09353999, y: -0.08142176, z: 0.0076756706, w: 0.9922509}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -929,7 +929,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094874375}
-  m_LocalRotation: {x: 0.11157308, y: -0.081268266, z: 0.009155376, w: 0.99038535}
+  m_LocalRotation: {x: 0.11157308, y: -0.08126872, z: 0.009155429, w: 0.9903853}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1193,7 +1193,19 @@ MonoBehaviour:
     m_ActionId: 0679030c-2505-4db5-9803-99305596d999
     m_ActionName: Player/Target Lock[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7490249761451085620}
+        m_TargetAssemblyTypeName: ThirdPersonPlayer, Assembly-CSharp
+        m_MethodName: NextTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 24637857-6830-434f-b61a-b181e5be13c8
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -1212,6 +1224,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8042aacd-764b-49c8-b473-7e5badba95dc
     m_ActionName: Player/Next Dialogue
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7490249761451085620}
+        m_TargetAssemblyTypeName: ThirdPersonPlayer, Assembly-CSharp
+        m_MethodName: PauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f56f653-359a-47a5-a74e-8c343563f2c5
+    m_ActionName: Player/Pause Game[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1241,6 +1269,7 @@ MonoBehaviour:
   viewCamera: {fileID: 963194227}
   turnSmoothTime: 0.2
   jumpHeight: 3
+  pauseMenu: {fileID: 0}
   fireRate: 0.6
   lockOnAngle: 60
   targetingCircleIce: {fileID: 7663654961686652047, guid: de9838d112098524e9ee76e313bc78a8, type: 3}

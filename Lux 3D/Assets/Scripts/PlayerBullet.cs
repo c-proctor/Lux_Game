@@ -9,6 +9,8 @@ public class PlayerBullet : MonoBehaviour
     public int speed;
     Rigidbody bulletRB;
     public Material iceMat, fireMat;
+    public GameObject FireParticle;
+    public GameObject IceParticle;
     Vector3 targetVec3;
     public int Damage = 50;
 
@@ -22,6 +24,7 @@ public class PlayerBullet : MonoBehaviour
     void Start()
     {
         bulletRB = GetComponent<Rigidbody>();
+        
         // Finds the player 
         ///Look at this bit later, seems to work, but might not later on...
         
@@ -60,9 +63,13 @@ public class PlayerBullet : MonoBehaviour
         {
             case BulletType.Fire:
                 GetComponent<Renderer>().material = fireMat;
+                IceParticle.SetActive(false);
+                FireParticle.SetActive(true);
                 break;
             case BulletType.Ice:
                 GetComponent<Renderer>().material = iceMat;
+                FireParticle.SetActive(false);
+                IceParticle.SetActive(true);
                 break;
         }
     }

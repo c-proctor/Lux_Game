@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour
+public class ItemPickupDialogue : MonoBehaviour
 {
     InventorySlot inventory;
     public ItemType.ItemTypes item; // MAKE SURE TO SET
+    public DialogueTrigger pairedDialogue;
+    private bool AddedItem = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +17,11 @@ public class ItemPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
+        if(pairedDialogue.DialogueCompleted() && !AddedItem)
         {
-            if (!inventory.slots.Contains(item))
-            {
-                inventory.slots.Add(item);
-                FindObjectOfType<GameplayUI>().ItemGot();
-            }
-            Destroy(gameObject);
+            inventory.slots.Add(item);
+            FindObjectOfType<GameplayUI>().ItemGot();
+            AddedItem = true;
         }
     }
 }

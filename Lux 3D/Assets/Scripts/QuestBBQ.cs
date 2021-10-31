@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestSnowman : MonoBehaviour
+public class QuestBBQ : MonoBehaviour
 {
     public GameObject QuestCompletedPrefab;
-    public GameObject PlacedBossPrefab;
+    private GameObject PairedBossPrefab;
     Mesh CompletedMesh;
     public QuestItemCheck PairedQuest;
     public BossEnemy bossStatus;
     bool changed = false;
-    public GameObject[] ActivatedGameObjects;
+    public GameObject[] ActivatedGameObjects, DeactivatedGameObjects;
+    public bool clearInventory;
     private bool QuestCompleted = false;
     private GameObject player;
+    
     // Start is called before the first frame update
     void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
@@ -30,16 +26,27 @@ public class QuestSnowman : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         if (PairedQuest.GetQuestCompletionState(player) && !changed)
         {
-            //PlacedBossPrefab = Instantiate(QuestCompletedPrefab, transform.position, transform.rotation);
+            if (QuestCompletedPrefab != null)
+            {
+                PairedBossPrefab = Instantiate(QuestCompletedPrefab, transform.position, transform.rotation);
+            }
             ActivateOtherGameObjects();
-            PlacedBossPrefab.GetComponent<BossEnemy>().ActivateBoss(true);
-            FindObjectOfType<InventorySlot>().slots.Clear();
-            FindObjectOfType<GameplayUI>().ItemGot();
+            DeactivateOtherGameObjects();
+            if (clearInventory)
+            {
+                FindObjectOfType<InventorySlot>().slots.Clear();
+                FindObjectOfType<GameplayUI>().ItemGot();
+            }
             QuestCompleted = true;
             gameObject.SetActive(false);
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -55,8 +62,15 @@ public class QuestSnowman : MonoBehaviour
             ActivatedGameObjects[ii].SetActive(true);
         }
     }
-    public bool GetQuestCompleted()
+    private void DeactivateOtherGameObjects()
     {
-        return QuestCompleted;
+        for (int ii = 0; ii < DeactivatedGameObjects.Length; ++ii)
+        {
+            DeactivatedGameObjects[ii].SetActive(false);
+        }
+    }
+    public bool GetQuestCompleted() 
+    { 
+        return QuestCompleted; 
     }
 }

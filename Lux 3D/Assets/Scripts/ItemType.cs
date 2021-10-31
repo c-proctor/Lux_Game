@@ -12,7 +12,11 @@ public class ItemType : MonoBehaviour
         Sticks,
         Rocks,
         Carrot,
-        FireLantern
+        Coal,
+        Stone,
+        Grill,
+        FireLantern,
+        IceLantern
     }
     // Start is called before the first frame update
     void Start()

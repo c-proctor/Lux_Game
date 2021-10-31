@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent agent;
     public bool showDistance = false;
     public int Health = 50;
+    public bool Boss = false;
 
     void Start()
     {
@@ -55,7 +56,11 @@ public class EnemyAI : MonoBehaviour
         }
         if(Health <= 0)
         {
-            Destroy(this);
+            if(Boss)
+            {
+                gameObject.GetComponent<BossEnemy>().BossDefeated();
+            }
+            Destroy(gameObject);
         }
 
     }

@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Lava
   - Bridge
+  - Dialogue Text Box
+  - PauseMenu
   layers:
   - Default
   - TransparentFX
