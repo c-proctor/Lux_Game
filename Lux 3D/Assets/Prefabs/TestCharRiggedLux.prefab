@@ -309,8 +309,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07912914, y: -0.08152378, z: 0.0064930827, w: 0.99350405}
-  m_LocalPosition: {x: 447.45422, y: 93.2137, z: 424.17023}
+  m_LocalRotation: {x: 0.079129174, y: -0.08152418, z: 0.0064931177, w: 0.99350405}
+  m_LocalPosition: {x: 0.801239, y: 1.4236965, z: -3.009037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6951322536454023384}
@@ -457,7 +457,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139928740}
-  m_LocalRotation: {x: 0.075523734, y: -0.081547625, z: 0.0061972993, w: 0.9937846}
+  m_LocalRotation: {x: 0.07552374, y: -0.081547186, z: 0.006197266, w: 0.9937846}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -535,7 +535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212414129}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5233183, y: 0.7325943, z: -3.167252}
+  m_LocalPosition: {x: 0.5233154, y: 0.73259425, z: -3.1672516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2094874377}
@@ -855,7 +855,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980738376}
-  m_LocalRotation: {x: 0.09353999, y: -0.08142176, z: 0.0076756706, w: 0.9922509}
+  m_LocalRotation: {x: 0.09354001, y: -0.08142138, z: 0.007675635, w: 0.992251}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -929,7 +929,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094874375}
-  m_LocalRotation: {x: 0.11157308, y: -0.08126872, z: 0.009155429, w: 0.9903853}
+  m_LocalRotation: {x: 0.11157308, y: -0.081268266, z: 0.009155378, w: 0.99038535}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1239,7 +1239,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1f56f653-359a-47a5-a74e-8c343563f2c5
-    m_ActionName: Player/Pause Game[/Keyboard/escape]
+    m_ActionName: Player/New action[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   bulletPoint: {fileID: 78765759}
   controller: {fileID: 153896302}
   Fireclip: {fileID: 8300000, guid: 00d29b791003b45489cb0a943974dbc3, type: 3}
-  BackgroundMusic: {fileID: 8300000, guid: 488fce910957baa4787d16b047d4c261, type: 3}
+  BackgroundMusic: {fileID: 8300000, guid: 20f4d1ff8323adb49bea930cb79c9fab, type: 3}
   playerCamera: {fileID: 963194228}
   viewCamera: {fileID: 963194227}
   turnSmoothTime: 0.2
