@@ -41,7 +41,8 @@ public class PlayerBullet : MonoBehaviour
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player");
-            transform.LookAt(target.transform.up);
+            transform.LookAt(target.transform.forward);
+            transform.rotation = target.transform.rotation;
             Debug.Log("TARGETING PLAYER!");
             targetVec3 = target.transform.forward;
         }

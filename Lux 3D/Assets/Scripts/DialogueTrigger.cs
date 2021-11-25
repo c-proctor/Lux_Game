@@ -21,7 +21,14 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.timeScale == 1)
+        {
+            dialogueTextBox.gameObject.SetActive(true);
+        }
+        else
+        {
+            dialogueTextBox.gameObject.SetActive(false);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
